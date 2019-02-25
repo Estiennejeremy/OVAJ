@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Classes;
 
 /**
  *
  * @author ESTIENNE
  */
-public class Project_ASI_1 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-    }
+public class Bdd {
 
 }
