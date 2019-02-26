@@ -125,6 +125,7 @@ public class accueil extends javax.swing.JPanel {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnBD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD1ActionPerformed
