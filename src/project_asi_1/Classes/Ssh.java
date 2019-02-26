@@ -26,9 +26,9 @@ import project_asi_1.Classes.utils.Prop;
  */
 public class Ssh {
 
-    private String userName;
-    private String password;
-    private String host;
+    final private String userName;
+    final private String password;
+    final private String host;
 
     public Ssh(String userName, String password, String host) {
         this.userName = userName;
@@ -38,9 +38,9 @@ public class Ssh {
     }
 
     public Ssh() {
-        this.userName = Prop.getUser();
-        this.host = Prop.getHote();
-        this.password = Prop.getmdp();
+        this.userName = Prop.getUserSsh();
+        this.host = Prop.getHoteSsh();
+        this.password = Prop.getmdpSsh();
     }
 
     public void sshCommand(ArrayList<String> listCommand) throws IOException, SQLException {

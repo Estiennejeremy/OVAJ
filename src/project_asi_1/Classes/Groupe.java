@@ -6,17 +6,46 @@
 package project_asi_1.Classes;
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author ESTIENNE
  */
+@Entity
+@Table(name = "groupe", schema = "OVAJ")
 public class Groupe {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_groupe")
+    private int id;
+    @Column(name = "nom")
     private String nom;
-    private ArrayList<Eleve> eleves;
+    @OneToMany(mappedBy = "groupe")
+    private List<Eleve> eleves;
 
     public Groupe() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Groupe(String nom) {
+        this.nom = nom;
+        this.eleves = new ArrayList<Eleve>();
     }
 
     public Groupe(String nom, ArrayList<Eleve> eleves) {
@@ -32,12 +61,16 @@ public class Groupe {
         this.nom = nom;
     }
 
-    public ArrayList<Eleve> getEleves() {
+    public List<Eleve> getEleves() {
         return eleves;
     }
 
     public void setEleves(ArrayList<Eleve> eleves) {
         this.eleves = eleves;
+    }
+
+    public void addEleve(Eleve e) {
+        this.eleves.add(e);
     }
 
     @Override
