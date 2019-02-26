@@ -36,6 +36,7 @@ public class Repo_modifier extends javax.swing.JPanel {
         btnBD_retour = new javax.swing.JButton();
         comboxREPO_user = new javax.swing.JComboBox<>();
         lblREPO_repo = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
 
         lblREPO_modifier.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblREPO_modifier.setText("Modifier");
@@ -76,6 +77,14 @@ public class Repo_modifier extends javax.swing.JPanel {
         lblREPO_repo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblREPO_repo.setText("Repositories");
 
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,7 +96,9 @@ public class Repo_modifier extends javax.swing.JPanel {
                         .addComponent(lblREPO_repo)
                         .addGap(337, 337, 337)
                         .addComponent(lblREPO_modifier)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnREPO_valider)
@@ -120,6 +131,7 @@ public class Repo_modifier extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblREPO_repo)
                     .addComponent(lblREPO_modifier))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,8 +171,13 @@ public class Repo_modifier extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBD_retourActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBD_retour;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnREPO_valider;
     private javax.swing.JComboBox<String> comboxREPO_user;
     private javax.swing.JLabel jLabel2;

@@ -31,6 +31,7 @@ public class groupes_addBD extends javax.swing.JPanel {
         jComboBox1Groupe_addBD = new javax.swing.JComboBox<>();
         jButtonGroupe_addBD_annuler = new javax.swing.JButton();
         jButtonGroupe_addBD_valider = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         jLabelGroupe_addBD.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabelGroupe_addBD.setText("Ajouter une base de donnée");
@@ -48,6 +49,14 @@ public class groupes_addBD extends javax.swing.JPanel {
         jButtonGroupe_addBD_valider.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_addBD_valider.setText("Valider");
 
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,15 +69,22 @@ public class groupes_addBD extends javax.swing.JPanel {
                 .addGap(79, 79, 79))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(244, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelGroupe_addBD)
-                    .addComponent(jComboBox1Groupe_addBD, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(236, 236, 236))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelGroupe_addBD)
+                            .addComponent(jComboBox1Groupe_addBD, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(236, 236, 236))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addContainerGap()
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
                 .addComponent(jLabelGroupe_addBD)
                 .addGap(32, 32, 32)
                 .addComponent(jComboBox1Groupe_addBD, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -84,7 +100,12 @@ public class groupes_addBD extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1Groupe_addBDActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton jButtonGroupe_addBD_annuler;
     private javax.swing.JButton jButtonGroupe_addBD_valider;
     private javax.swing.JComboBox<String> jComboBox1Groupe_addBD;

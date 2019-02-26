@@ -39,6 +39,7 @@ public class BD extends javax.swing.JPanel {
         btnBD_creer = new javax.swing.JButton();
         btnBD_supprimer = new javax.swing.JButton();
         btnBD_modifier = new javax.swing.JButton();
+        btnExit2 = new javax.swing.JButton();
 
         lblBD_BD.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblBD_BD.setText("Base de données");
@@ -93,6 +94,14 @@ public class BD extends javax.swing.JPanel {
         btnBD_modifier.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         btnBD_modifier.setText("Modifier");
 
+        btnExit2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit2.setText("X");
+        btnExit2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExit2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,7 +109,9 @@ public class BD extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(375, Short.MAX_VALUE)
                 .addComponent(lblBD_BD)
-                .addGap(346, 346, 346))
+                .addGap(282, 282, 282)
+                .addComponent(btnExit2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -131,7 +142,9 @@ public class BD extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblBD_BD)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBD_BD)
+                    .addComponent(btnExit2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -174,12 +187,19 @@ public class BD extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBD_supprimerActionPerformed
 
+    private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExit2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBD_creer;
     private javax.swing.JButton btnBD_loupe;
     private javax.swing.JButton btnBD_modifier;
     private javax.swing.JButton btnBD_retour;
     private javax.swing.JButton btnBD_supprimer;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnExit1;
+    private javax.swing.JButton btnExit2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

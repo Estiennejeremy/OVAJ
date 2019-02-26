@@ -30,6 +30,7 @@ public class groupes_supp_repo extends javax.swing.JPanel {
         jButtonGroupe_oui_supprimerRepo = new javax.swing.JButton();
         jButtonGroupe_non_supprimerRepo = new javax.swing.JButton();
         jLabelGroupe_supprimer_repo = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
 
         jButtonGroupe_oui_supprimerRepo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_oui_supprimerRepo.setText("Oui");
@@ -44,6 +45,14 @@ public class groupes_supp_repo extends javax.swing.JPanel {
 
         jLabelGroupe_supprimer_repo.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabelGroupe_supprimer_repo.setText("<html><p>Voulez vous supprimer le <br>repository  _____ du groupe _____ ?</p></html>");
+
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -60,11 +69,17 @@ public class groupes_supp_repo extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
                         .addComponent(jButtonGroupe_non_supprimerRepo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(264, 264, 264))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addContainerGap()
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
                 .addComponent(jLabelGroupe_supprimer_repo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(219, 219, 219)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -78,7 +93,12 @@ public class groupes_supp_repo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonGroupe_oui_supprimerRepoActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton jButtonGroupe_non_supprimerRepo;
     private javax.swing.JButton jButtonGroupe_oui_supprimerRepo;
     private javax.swing.JLabel jLabelGroupe_supprimer_repo;
