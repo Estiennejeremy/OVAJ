@@ -63,6 +63,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Oui"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGroupe_oui_supprimerBDActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonGroupe_non_supprimerBD">
       <Properties>
@@ -71,6 +74,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Non"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGroupe_non_supprimerBDActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelGroupe_supprimer_bd">
       <Properties>

@@ -45,10 +45,9 @@ public class Groupe {
 
     public Groupe(String nom) {
         this.nom = nom;
-        this.eleves = new ArrayList<Eleve>();
     }
 
-    public Groupe(String nom, ArrayList<Eleve> eleves) {
+    public Groupe(String nom, List<Eleve> eleves) {
         this.nom = nom;
         this.eleves = eleves;
     }
@@ -71,6 +70,7 @@ public class Groupe {
 
     public void addEleve(Eleve e) {
         this.eleves.add(e);
+        e.setGroupe(this);
     }
 
     @Override

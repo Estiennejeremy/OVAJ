@@ -68,6 +68,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Oui"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEleve_oui_supprimerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEleve_non_supprimer">
       <Properties>
@@ -76,6 +79,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Non"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEleve_non_supprimerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnExit">
       <Properties>

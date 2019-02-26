@@ -32,8 +32,13 @@ public class Project_ASI_1 {
 //        myFrame.setVisible(true);
         Eleve e = new Eleve("test", "test2", "test3", "test4");
         Groupe g = new Groupe("yes");
+        g.addEleve(e);
         EleveDAO d = new EleveDAO();
-        d.saveEleve(e);
+        System.out.println(g.getEleves());
+        // d.saveEleve(e);
+//        Bdd df = new Bdd("sayor", g);
+//        df.generateBd();
+        System.exit(0);
 
     }
 }
