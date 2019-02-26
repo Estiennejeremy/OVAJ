@@ -31,6 +31,8 @@ public class Groupe {
     private String nom;
     @OneToMany(mappedBy = "groupe")
     private List<Eleve> eleves;
+    @OneToMany(mappedBy = "groupe")
+    private List<Bdd> bdd;
 
     public Groupe() {
     }
@@ -71,6 +73,18 @@ public class Groupe {
     public void addEleve(Eleve e) {
         this.eleves.add(e);
         e.setGroupe(this);
+    }
+
+    public List<Bdd> getBdd() {
+        return bdd;
+    }
+
+    public void setBdd(ArrayList<Bdd> bdd) {
+        this.bdd = bdd;
+    }
+
+    public void addEleve(Bdd b) {
+        this.bdd.add(b);
     }
 
     @Override

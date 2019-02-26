@@ -207,6 +207,7 @@ public class BD extends javax.swing.JPanel {
 
     private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit2ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnExit2ActionPerformed
 
     private void btnBD_creerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_creerActionPerformed

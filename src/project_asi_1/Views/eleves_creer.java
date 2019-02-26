@@ -204,6 +204,7 @@ public class eleves_creer extends javax.swing.JPanel {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnEleve_retour1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEleve_retour1ActionPerformed
