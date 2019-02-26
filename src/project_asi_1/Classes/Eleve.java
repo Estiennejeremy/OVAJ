@@ -5,18 +5,50 @@
  */
 package project_asi_1.Classes;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author ESTIENNE
  */
+@Entity
+@Table(name = "eleve", schema = "OVAJ")
 public class Eleve {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_eleve")
+    private int id;
+    @Column(name = "nom")
     private String nom;
+    @Column(name = "prenom")
     private String prenom;
+    @Column(name = "mail")
     private String mail;
+    @Column(name = "pwd")
     private String pwd;
+    @Column(name = "abreviation")
+    private String abreviation;
+    @ManyToOne
+    private Groupe groupe;
 
     public Eleve() {
+    }
+
+    public Eleve(int id, String nom, String prenom, String mail, String pwd, String abreviation, Groupe groupe) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.pwd = pwd;
+        this.abreviation = abreviation;
+        this.groupe = groupe;
     }
 
     public Eleve(String nom, String prenom, String mail, String pwd) {
@@ -24,6 +56,16 @@ public class Eleve {
         this.prenom = prenom;
         this.mail = mail;
         this.pwd = pwd;
+        this.abreviation = prenom.charAt(0) + nom;
+
+    }
+
+    public Groupe getGroupe() {
+        return groupe;
+    }
+
+    public void setGroupe(Groupe groupe) {
+        this.groupe = groupe;
     }
 
     public String getNom() {
@@ -54,8 +96,24 @@ public class Eleve {
         return pwd;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public String getAbreviation() {
+        return abreviation;
+    }
+
+    public void setAbreviation(String abreviation) {
+        this.abreviation = abreviation;
     }
 
     @Override

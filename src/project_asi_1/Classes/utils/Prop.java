@@ -42,16 +42,28 @@ public abstract class Prop {
         return prop;
     }
 
-    public static String getHote() {
-        return getProp().getProperty("app.hote");
+    public static String getHoteSsh() {
+        return getProp().getProperty("app.hoteSsh");
     }
 
-    public static String getmdp() {
-        return getProp().getProperty("app.mdp");
+    public static String getmdpSsh() {
+        return getProp().getProperty("app.mdpSsh");
     }
 
-    public static String getUser() {
-        return getProp().getProperty("app.user");
+    public static String getUserSsh() {
+        return getProp().getProperty("app.userSsh");
+    }
+
+    public static String getHoteBdd() {
+        return getProp().getProperty("app.hoteBdd");
+    }
+
+    public static String getmdpBdd() {
+        return getProp().getProperty("app.mdpBdd");
+    }
+
+    public static String getUserBdd() {
+        return getProp().getProperty("app.userBdd");
     }
 
 }
