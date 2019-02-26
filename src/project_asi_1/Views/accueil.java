@@ -49,6 +49,11 @@ public class accueil extends javax.swing.JPanel {
 
         btnRepositories.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnRepositories.setLabel("Repositories");
+        btnRepositories.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepositoriesActionPerformed(evt);
+            }
+        });
 
         btnEleves.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnEleves.setText("Elèves");
@@ -113,6 +118,9 @@ public class accueil extends javax.swing.JPanel {
 
     private void btnGroupesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGroupesActionPerformed
         // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
+        Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnGroupesActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -121,6 +129,9 @@ public class accueil extends javax.swing.JPanel {
 
     private void btnBD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD1ActionPerformed
         // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.BD());
+        Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnBD1ActionPerformed
 
     private void btnElevesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElevesActionPerformed
@@ -130,6 +141,13 @@ public class accueil extends javax.swing.JPanel {
         Frame.getFrames()[0].setVisible(true);
 
     }//GEN-LAST:event_btnElevesActionPerformed
+
+    private void btnRepositoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepositoriesActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.Repo());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnRepositoriesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBD1;

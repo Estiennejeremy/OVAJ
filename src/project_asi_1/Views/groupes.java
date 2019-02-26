@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
+
+import java.awt.Frame;
 
 /**
  *
@@ -63,13 +65,28 @@ public class groupes extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jListGroupe_gestion);
 
         jButtonGroupe_creer.setText("Modifier");
+        jButtonGroupe_creer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_creerActionPerformed(evt);
+            }
+        });
 
         lblGroupe_gestion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblGroupe_gestion.setText("Gestion des groupes");
 
         jButtonGroupe_supprimer.setText("Supprimer");
+        jButtonGroupe_supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_supprimerActionPerformed(evt);
+            }
+        });
 
         jButtonGroupe_creer2.setText("Créer");
+        jButtonGroupe_creer2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_creer2ActionPerformed(evt);
+            }
+        });
 
         lblGroupe_gestion1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblGroupe_gestion1.setText("Gestion des membres");
@@ -82,8 +99,18 @@ public class groupes extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jListGroupe1);
 
         jButtonGroupe_supprimer_membre.setText("Supprimer");
+        jButtonGroupe_supprimer_membre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_supprimer_membreActionPerformed(evt);
+            }
+        });
 
         jButtonGroupe_membre_creer.setText("Ajouter");
+        jButtonGroupe_membre_creer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_membre_creerActionPerformed(evt);
+            }
+        });
 
         jListGroupe_gestion1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -106,14 +133,39 @@ public class groupes extends javax.swing.JPanel {
         lblGroupe_gestion_repo.setText("Gestion des repositories");
 
         jButtonGroupe_bd_ajouter.setText("Ajouter");
+        jButtonGroupe_bd_ajouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_bd_ajouterActionPerformed(evt);
+            }
+        });
 
         jButtonGroupe_repo_ajouter.setText("Ajouter");
+        jButtonGroupe_repo_ajouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_repo_ajouterActionPerformed(evt);
+            }
+        });
 
         jButtonGroupe_supprimer_repo.setText("Supprimer");
+        jButtonGroupe_supprimer_repo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_supprimer_repoActionPerformed(evt);
+            }
+        });
 
         jButtonGroupe_supprimer_bd.setText("Supprimer");
+        jButtonGroupe_supprimer_bd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_supprimer_bdActionPerformed(evt);
+            }
+        });
 
         btnGroupe_retour.setText("Retour");
+        btnGroupe_retour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGroupe_retourActionPerformed(evt);
+            }
+        });
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnExit.setText("X");
@@ -247,6 +299,76 @@ public class groupes extends javax.swing.JPanel {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnGroupe_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGroupe_retourActionPerformed
+
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.accueil());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnGroupe_retourActionPerformed
+
+    private void jButtonGroupe_creer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_creer2ActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_creer());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_creer2ActionPerformed
+
+    private void jButtonGroupe_creerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_creerActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_modifier());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_creerActionPerformed
+
+    private void jButtonGroupe_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_supprimerActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_supprimer());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_supprimerActionPerformed
+
+    private void jButtonGroupe_bd_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_bd_ajouterActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_addBD());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_bd_ajouterActionPerformed
+
+    private void jButtonGroupe_supprimer_bdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_supprimer_bdActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_supp_bd());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_supprimer_bdActionPerformed
+
+    private void jButtonGroupe_membre_creerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_membre_creerActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_addmembre());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_membre_creerActionPerformed
+
+    private void jButtonGroupe_supprimer_membreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_supprimer_membreActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_supp_membre());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_supprimer_membreActionPerformed
+
+    private void jButtonGroupe_repo_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_repo_ajouterActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_addRepo());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_repo_ajouterActionPerformed
+
+    private void jButtonGroupe_supprimer_repoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_supprimer_repoActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_supp_repo());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_supprimer_repoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;

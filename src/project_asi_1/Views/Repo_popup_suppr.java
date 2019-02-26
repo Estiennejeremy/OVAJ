@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
+
+import java.awt.Frame;
 
 /**
  *
@@ -107,6 +109,9 @@ public class Repo_popup_suppr extends javax.swing.JPanel {
 
     private void btnREPO_ouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_ouiActionPerformed
         // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.Repo());
+        Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnREPO_ouiActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -115,6 +120,9 @@ public class Repo_popup_suppr extends javax.swing.JPanel {
 
     private void btnREPO_nonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_nonActionPerformed
         // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.Repo());
+        Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnREPO_nonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

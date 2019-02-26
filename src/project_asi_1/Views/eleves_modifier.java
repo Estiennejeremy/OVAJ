@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
+
+import java.awt.Frame;
 
 /**
  *
@@ -72,9 +74,19 @@ public class eleves_modifier extends javax.swing.JPanel {
 
         btnEleve_retour_modifier.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnEleve_retour_modifier.setText("Retour");
+        btnEleve_retour_modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEleve_retour_modifierActionPerformed(evt);
+            }
+        });
 
         btnEleve_valider_modifier.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnEleve_valider_modifier.setText("Valider");
+        btnEleve_valider_modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEleve_valider_modifierActionPerformed(evt);
+            }
+        });
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnExit.setText("X");
@@ -164,6 +176,21 @@ public class eleves_modifier extends javax.swing.JPanel {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnEleve_retour_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEleve_retour_modifierActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnEleve_retour_modifierActionPerformed
+
+    private void btnEleve_valider_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEleve_valider_modifierActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnEleve_valider_modifierActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEleve_retour_modifier;

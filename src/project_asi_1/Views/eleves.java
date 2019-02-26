@@ -5,6 +5,8 @@
  */
 package project_asi_1.Views;
 
+import java.awt.Frame;
+
 /**
  *
  * @author Lucas
@@ -58,12 +60,27 @@ public class eleves extends javax.swing.JPanel {
 
         btnRetour.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnRetour.setText("Retour");
+        btnRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetourActionPerformed(evt);
+            }
+        });
 
         brnCreer.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         brnCreer.setText("Créer");
+        brnCreer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                brnCreerActionPerformed(evt);
+            }
+        });
 
         btnSupprimer.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnSupprimer.setText("Supprimer");
+        btnSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSupprimerActionPerformed(evt);
+            }
+        });
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnExit.setText("X");
@@ -120,11 +137,35 @@ public class eleves extends javax.swing.JPanel {
 
     private void btnModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifierActionPerformed
         // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.eleves_modifier());
+        Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnModifierActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void brnCreerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnCreerActionPerformed
+
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.eleves_creer());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_brnCreerActionPerformed
+
+    private void btnSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupprimerActionPerformed
+
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.eleves_supprimer());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnSupprimerActionPerformed
+
+    private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.accueil());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnRetourActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton brnCreer;

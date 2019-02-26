@@ -94,6 +94,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Annuler"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGroupe_addBD_annulerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonGroupe_addBD_valider">
       <Properties>
@@ -102,6 +105,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Valider"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGroupe_addBD_validerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnExit">
       <Properties>
