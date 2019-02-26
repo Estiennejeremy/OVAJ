@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import project_asi_1.Classes.utils.Prop;
 
 /**
  *
@@ -34,6 +35,12 @@ public class Ssh {
         this.password = password;
         this.host = host;
 
+    }
+
+    public Ssh() {
+        this.userName = Prop.getUser();
+        this.host = Prop.getHote();
+        this.password = Prop.getmdp();
     }
 
     public void sshCommand(ArrayList<String> listCommand) throws IOException, SQLException {
