@@ -116,6 +116,7 @@ public class Repo_popup_suppr extends javax.swing.JPanel {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnREPO_nonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_nonActionPerformed

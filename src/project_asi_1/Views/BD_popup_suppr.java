@@ -116,6 +116,7 @@ public class BD_popup_suppr extends javax.swing.JPanel {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnBD_nonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_nonActionPerformed
