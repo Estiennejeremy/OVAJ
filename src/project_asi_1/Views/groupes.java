@@ -50,6 +50,7 @@ public class groupes extends javax.swing.JPanel {
         jButtonGroupe_supprimer_repo = new javax.swing.JButton();
         jButtonGroupe_supprimer_bd = new javax.swing.JButton();
         btnGroupe_retour = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         jLabelGroupe.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabelGroupe.setText("Groupe");
@@ -114,6 +115,14 @@ public class groupes extends javax.swing.JPanel {
 
         btnGroupe_retour.setText("Retour");
 
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,7 +169,9 @@ public class groupes extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelGroupe)
-                .addGap(456, 456, 456))
+                .addGap(392, 392, 392)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(jButtonGroupe_creer2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,8 +187,13 @@ public class groupes extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabelGroupe)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabelGroupe))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblGroupe_gestion)
@@ -228,7 +244,12 @@ public class groupes extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnGroupe_retour;
     private javax.swing.JButton jButtonGroupe_bd_ajouter;
     private javax.swing.JButton jButtonGroupe_creer;

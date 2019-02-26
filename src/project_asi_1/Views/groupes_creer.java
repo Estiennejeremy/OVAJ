@@ -36,6 +36,7 @@ public class groupes_creer extends javax.swing.JPanel {
         jListGroupe1 = new javax.swing.JList<>();
         jButtonGroupe_creer_annuler = new javax.swing.JButton();
         jButtonGroupe_creer_valider = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         jLabelGroupe_creer.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabelGroupe_creer.setText("Créer");
@@ -68,6 +69,14 @@ public class groupes_creer extends javax.swing.JPanel {
         jButtonGroupe_creer_valider.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_creer_valider.setText("Valider");
 
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,6 +105,10 @@ public class groupes_creer extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonGroupe_creer_valider, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(150, 150, 150)
@@ -105,7 +118,9 @@ public class groupes_creer extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addContainerGap()
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addComponent(jLabelGroupe_creer)
                 .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -132,7 +147,12 @@ public class groupes_creer extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldGroupe_creer_nomActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton jButtonGroupe_ajouterEleves;
     private javax.swing.JButton jButtonGroupe_creer_annuler;
     private javax.swing.JButton jButtonGroupe_creer_valider;

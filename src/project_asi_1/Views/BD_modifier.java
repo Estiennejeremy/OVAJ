@@ -36,6 +36,7 @@ public class BD_modifier extends javax.swing.JPanel {
         btnBD_retour = new javax.swing.JButton();
         comboxBD_user = new javax.swing.JComboBox<>();
         lblBD_BD = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
 
         lblBD_modifier.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblBD_modifier.setText("Modifier");
@@ -76,6 +77,14 @@ public class BD_modifier extends javax.swing.JPanel {
         lblBD_BD.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblBD_BD.setText("Base de données");
 
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,7 +96,9 @@ public class BD_modifier extends javax.swing.JPanel {
                         .addComponent(lblBD_BD)
                         .addGap(337, 337, 337)
                         .addComponent(lblBD_modifier)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnBD_valider)
@@ -120,6 +131,7 @@ public class BD_modifier extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBD_BD)
                     .addComponent(lblBD_modifier))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,9 +171,14 @@ public class BD_modifier extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBD_retourActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBD_retour;
     private javax.swing.JButton btnBD_valider;
+    private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> comboxBD_user;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblBD_BD;

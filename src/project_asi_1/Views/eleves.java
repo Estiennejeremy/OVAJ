@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
 
 /**
  *
@@ -34,6 +34,7 @@ public class eleves extends javax.swing.JPanel {
         btnRetour = new javax.swing.JButton();
         brnCreer = new javax.swing.JButton();
         btnSupprimer = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1080, 720));
 
@@ -64,6 +65,14 @@ public class eleves extends javax.swing.JPanel {
         btnSupprimer.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnSupprimer.setText("Supprimer");
 
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,11 +91,17 @@ public class eleves extends javax.swing.JPanel {
                     .addComponent(btnSupprimer, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                     .addComponent(btnRetour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(242, 242, 242))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addContainerGap()
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(lblEleves)
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -107,8 +122,13 @@ public class eleves extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModifierActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton brnCreer;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnModifier;
     private javax.swing.JButton btnRetour;
     private javax.swing.JButton btnSupprimer;

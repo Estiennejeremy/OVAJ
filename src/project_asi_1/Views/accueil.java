@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
+
+import java.awt.Frame;
 
 /**
  *
@@ -50,6 +52,11 @@ public class accueil extends javax.swing.JPanel {
 
         btnEleves.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnEleves.setText("Elèves");
+        btnEleves.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElevesActionPerformed(evt);
+            }
+        });
 
         btnBD1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnBD1.setLabel("Base de données");
@@ -115,6 +122,14 @@ public class accueil extends javax.swing.JPanel {
     private void btnBD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBD1ActionPerformed
+
+    private void btnElevesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElevesActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
+        Frame.getFrames()[0].setVisible(true);
+
+    }//GEN-LAST:event_btnElevesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBD1;

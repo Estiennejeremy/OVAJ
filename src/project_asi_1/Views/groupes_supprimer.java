@@ -30,6 +30,7 @@ public class groupes_supprimer extends javax.swing.JPanel {
         jButtonGroupe_non_supprimer = new javax.swing.JButton();
         jLabelGroupe_supprimer = new javax.swing.JLabel();
         jButtonGroupe_oui_supprimer = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         jButtonGroupe_non_supprimer.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_non_supprimer.setText("Non");
@@ -39,6 +40,14 @@ public class groupes_supprimer extends javax.swing.JPanel {
 
         jButtonGroupe_oui_supprimer.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_oui_supprimer.setText("Oui");
+
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -54,11 +63,17 @@ public class groupes_supprimer extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonGroupe_non_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(264, 264, 264))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(204, 204, 204)
+                .addContainerGap()
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146)
                 .addComponent(jLabelGroupe_supprimer)
                 .addGap(141, 141, 141)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -68,7 +83,12 @@ public class groupes_supprimer extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton jButtonGroupe_non_supprimer;
     private javax.swing.JButton jButtonGroupe_oui_supprimer;
     private javax.swing.JLabel jLabelGroupe_supprimer;

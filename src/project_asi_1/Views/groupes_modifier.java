@@ -32,6 +32,7 @@ public class groupes_modifier extends javax.swing.JPanel {
         jLabelGroupe_modifier = new javax.swing.JLabel();
         jButtonGroupe_modifier_annuler = new javax.swing.JButton();
         jButtonGroupe_modifier_valider = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         jTextFieldGroupe_modifier_nom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +51,14 @@ public class groupes_modifier extends javax.swing.JPanel {
 
         jButtonGroupe_modifier_valider.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_modifier_valider.setText("Valider");
+
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,11 +83,17 @@ public class groupes_modifier extends javax.swing.JPanel {
                                 .addGap(75, 75, 75)
                                 .addComponent(jTextFieldGroupe_modifier_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(297, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addContainerGap()
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addComponent(jLabelGroupe_modifier)
                 .addGap(103, 103, 103)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +111,12 @@ public class groupes_modifier extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldGroupe_modifier_nomActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton jButtonGroupe_modifier_annuler;
     private javax.swing.JButton jButtonGroupe_modifier_valider;
     private javax.swing.JLabel jLabelGroupe_modifier;

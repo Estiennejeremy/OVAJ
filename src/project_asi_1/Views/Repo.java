@@ -39,6 +39,7 @@ public class Repo extends javax.swing.JPanel {
         btnREPO_creer = new javax.swing.JButton();
         btnREPO_supprimer = new javax.swing.JButton();
         btnREPO_modifier = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         lblREPO_Repo.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblREPO_Repo.setText("Repositories");
@@ -93,6 +94,14 @@ public class Repo extends javax.swing.JPanel {
         btnREPO_modifier.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         btnREPO_modifier.setText("Modifier");
 
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,7 +109,9 @@ public class Repo extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(478, Short.MAX_VALUE)
                 .addComponent(lblREPO_Repo)
-                .addGap(346, 346, 346))
+                .addGap(282, 282, 282)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -131,7 +142,9 @@ public class Repo extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblREPO_Repo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblREPO_Repo)
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -174,7 +187,12 @@ public class Repo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnREPO_supprimerActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnREPO_creer;
     private javax.swing.JButton btnREPO_loupe;
     private javax.swing.JButton btnREPO_modifier;

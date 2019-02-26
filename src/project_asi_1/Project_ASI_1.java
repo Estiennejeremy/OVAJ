@@ -5,6 +5,8 @@
  */
 package project_asi_1;
 
+import javax.swing.*;
+
 /**
  *
  * @author ESTIENNE
@@ -16,6 +18,14 @@ public class Project_ASI_1 {
      */
     public static void main(String[] args) {
 
-    }
+        // TODO code application logic here
+        JFrame myFrame = new JFrame("frame");
+        myFrame.setSize(1080, 720);
+        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myFrame.add(new project_asi_1.Views.accueil());
+        myFrame.setVisible(true);
 
+
+
+    }
 }
