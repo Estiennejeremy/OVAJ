@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
+
+import java.awt.Frame;
 
 /**
  *
@@ -82,6 +84,11 @@ public class BD extends javax.swing.JPanel {
 
         btnBD_creer.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         btnBD_creer.setText("Créer");
+        btnBD_creer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBD_creerActionPerformed(evt);
+            }
+        });
 
         btnBD_supprimer.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         btnBD_supprimer.setText("Supprimer");
@@ -93,6 +100,11 @@ public class BD extends javax.swing.JPanel {
 
         btnBD_modifier.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         btnBD_modifier.setText("Modifier");
+        btnBD_modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBD_modifierActionPerformed(evt);
+            }
+        });
 
         btnExit2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnExit2.setText("X");
@@ -177,6 +189,9 @@ public class BD extends javax.swing.JPanel {
 
     private void btnBD_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_retourActionPerformed
         // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.accueil());
+        Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnBD_retourActionPerformed
 
     private void txtBD_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBD_searchActionPerformed
@@ -185,11 +200,28 @@ public class BD extends javax.swing.JPanel {
 
     private void btnBD_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_supprimerActionPerformed
         // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_suppr());
+        Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnBD_supprimerActionPerformed
 
     private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExit2ActionPerformed
+
+    private void btnBD_creerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_creerActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.BD_creer());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnBD_creerActionPerformed
+
+    private void btnBD_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_modifierActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.BD_modifier());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnBD_modifierActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBD_creer;
@@ -197,8 +229,6 @@ public class BD extends javax.swing.JPanel {
     private javax.swing.JButton btnBD_modifier;
     private javax.swing.JButton btnBD_retour;
     private javax.swing.JButton btnBD_supprimer;
-    private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnExit1;
     private javax.swing.JButton btnExit2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
+
+import java.awt.Frame;
 
 /**
  *
@@ -82,6 +84,11 @@ public class Repo extends javax.swing.JPanel {
 
         btnREPO_creer.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         btnREPO_creer.setText("Créer");
+        btnREPO_creer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnREPO_creerActionPerformed(evt);
+            }
+        });
 
         btnREPO_supprimer.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         btnREPO_supprimer.setText("Supprimer");
@@ -93,6 +100,11 @@ public class Repo extends javax.swing.JPanel {
 
         btnREPO_modifier.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         btnREPO_modifier.setText("Modifier");
+        btnREPO_modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnREPO_modifierActionPerformed(evt);
+            }
+        });
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnExit.setText("X");
@@ -177,6 +189,9 @@ public class Repo extends javax.swing.JPanel {
 
     private void btnREPO_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_retourActionPerformed
         // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.accueil());
+        Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnREPO_retourActionPerformed
 
     private void txtREPO_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtREPO_searchActionPerformed
@@ -185,11 +200,28 @@ public class Repo extends javax.swing.JPanel {
 
     private void btnREPO_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_supprimerActionPerformed
         // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.Repo_popup_suppr());
+        Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnREPO_supprimerActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnREPO_creerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_creerActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.Repo_creer());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnREPO_creerActionPerformed
+
+    private void btnREPO_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_modifierActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.Repo_modifier());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnREPO_modifierActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;

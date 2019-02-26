@@ -81,6 +81,9 @@
         </Property>
         <Property name="label" type="java.lang.String" value="Repositories"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRepositoriesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEleves">
       <Properties>

@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
+
+import java.awt.Frame;
 
 /**
  *
@@ -78,9 +80,19 @@ public class eleves_creer extends javax.swing.JPanel {
 
         btnEleve_valider.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnEleve_valider.setText("Valider");
+        btnEleve_valider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEleve_validerActionPerformed(evt);
+            }
+        });
 
         btnEleve_retour1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnEleve_retour1.setText("Retour");
+        btnEleve_retour1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEleve_retour1ActionPerformed(evt);
+            }
+        });
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnExit.setText("X");
@@ -193,6 +205,20 @@ public class eleves_creer extends javax.swing.JPanel {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnEleve_retour1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEleve_retour1ActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnEleve_retour1ActionPerformed
+
+    private void btnEleve_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEleve_validerActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_btnEleve_validerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEleve_retour1;

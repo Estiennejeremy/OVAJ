@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
+
+import java.awt.Frame;
 
 /**
  *
@@ -65,9 +67,19 @@ public class groupes_creer extends javax.swing.JPanel {
 
         jButtonGroupe_creer_annuler.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_creer_annuler.setText("Annuler");
+        jButtonGroupe_creer_annuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_creer_annulerActionPerformed(evt);
+            }
+        });
 
         jButtonGroupe_creer_valider.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_creer_valider.setText("Valider");
+        jButtonGroupe_creer_valider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_creer_validerActionPerformed(evt);
+            }
+        });
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnExit.setText("X");
@@ -150,6 +162,20 @@ public class groupes_creer extends javax.swing.JPanel {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void jButtonGroupe_creer_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_creer_annulerActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_creer_annulerActionPerformed
+
+    private void jButtonGroupe_creer_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_creer_validerActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_creer_validerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;

@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project_asi_1;
+package project_asi_1.Views;
+
+import java.awt.Frame;
 
 /**
  *
@@ -34,9 +36,19 @@ public class groupes_supp_bd extends javax.swing.JPanel {
 
         jButtonGroupe_oui_supprimerBD.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_oui_supprimerBD.setText("Oui");
+        jButtonGroupe_oui_supprimerBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_oui_supprimerBDActionPerformed(evt);
+            }
+        });
 
         jButtonGroupe_non_supprimerBD.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_non_supprimerBD.setText("Non");
+        jButtonGroupe_non_supprimerBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGroupe_non_supprimerBDActionPerformed(evt);
+            }
+        });
 
         jLabelGroupe_supprimer_bd.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabelGroupe_supprimer_bd.setText("<html><p>Voulez vous supprimer la  <br>base  _____ du groupe _____ ?</p></html>");
@@ -87,6 +99,20 @@ public class groupes_supp_bd extends javax.swing.JPanel {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void jButtonGroupe_oui_supprimerBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_oui_supprimerBDActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_oui_supprimerBDActionPerformed
+
+    private void jButtonGroupe_non_supprimerBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_non_supprimerBDActionPerformed
+        // TODO add your handling code here:
+        Frame.getFrames()[0].remove(this);
+        Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
+        Frame.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jButtonGroupe_non_supprimerBDActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
