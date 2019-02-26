@@ -214,6 +214,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cr&#xe9;er"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnREPO_creerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnREPO_supprimer">
       <Properties>
@@ -233,6 +236,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Modifier"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnREPO_modifierActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnExit">
       <Properties>

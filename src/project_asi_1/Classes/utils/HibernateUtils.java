@@ -15,6 +15,7 @@ import org.hibernate.service.ServiceRegistry;
 import project_asi_1.Classes.Bdd;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.Groupe;
+import project_asi_1.Classes.Repo;
 
 public class HibernateUtils {
 
@@ -38,6 +39,7 @@ public class HibernateUtils {
                 configuration.addAnnotatedClass(Eleve.class);
                 configuration.addAnnotatedClass(Groupe.class);
                 configuration.addAnnotatedClass(Bdd.class);
+                configuration.addAnnotatedClass(Repo.class);
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);

@@ -156,6 +156,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Retour"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEleve_retour_modifierActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEleve_valider_modifier">
       <Properties>
@@ -164,6 +167,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Valider"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEleve_valider_modifierActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnExit">
       <Properties>
