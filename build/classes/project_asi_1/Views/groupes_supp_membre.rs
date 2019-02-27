@@ -1,2 +1,0 @@
-project_asi_1.groupes_supp_membre$1
-project_asi_1.groupes_supp_membre
