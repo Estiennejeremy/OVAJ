@@ -5,12 +5,16 @@
  */
 package project_asi_1.Classes;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -35,20 +39,20 @@ public class Eleve {
     private String pwd;
     @Column(name = "abreviation")
     private String abreviation;
-    @ManyToOne
-    private Groupe groupe;
+    @ManyToMany(mappedBy = "eleves", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Groupe> groupes;
 
     public Eleve() {
     }
 
-    public Eleve(int id, String nom, String prenom, String mail, String pwd, String abreviation, Groupe groupe) {
+    public Eleve(int id, String nom, String prenom, String mail, String pwd, String abreviation, List<Groupe> groupes) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.pwd = pwd;
         this.abreviation = abreviation;
-        this.groupe = groupe;
+        this.groupes = groupes;
     }
 
     public Eleve(String nom, String prenom, String mail, String pwd) {
@@ -57,19 +61,24 @@ public class Eleve {
         this.mail = mail;
         this.pwd = pwd;
         this.abreviation = prenom.charAt(0) + nom;
+        this.groupes = new ArrayList<Groupe>();
 
     }
 
-    public Groupe getGroupe() {
-        return groupe;
+    public List<Groupe> getGroupes() {
+        return groupes;
     }
 
-    public void setGroupe(Groupe groupe) {
-        this.groupe = groupe;
+    public void setGroupe(List<Groupe> groupe) {
+        this.groupes = groupe;
     }
 
     public String getNom() {
         return nom;
+    }
+
+    public void addGroupes(Groupe g) {
+        this.groupes.add(g);
     }
 
     public void setNom(String nom) {
