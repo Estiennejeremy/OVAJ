@@ -54,9 +54,10 @@ public class BddDAO {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
         Session session = HibernateUtils.getSessionFactory().openSession();
         String SQLRequest = "";
-        SQLRequest = "CREATE SCHEMA " + g.getNom() + timeStamp + ";";
+        String nomBd = g.getNom() + timeStamp;
+        SQLRequest = "CREATE SCHEMA " + nomBd + ";";
         for (Eleve e : g.getEleves()) {
-            SQLRequest = SQLRequest + " GRANT ALL PRIVILEGES ON database " + g.getNom() + timeStamp + ".* TO '" + e.getAbreviation() + "'@'127.0.0.1';";
+            SQLRequest = SQLRequest + " GRANT ALL PRIVILEGES ON database " + nomBd + ".* TO '" + e.getAbreviation() + "'@'%';";
         }
         session.beginTransaction();
         session.createSQLQuery(SQLRequest).executeUpdate();
