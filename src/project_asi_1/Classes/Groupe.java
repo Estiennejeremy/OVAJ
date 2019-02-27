@@ -7,11 +7,16 @@ package project_asi_1.Classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,8 +34,17 @@ public class Groupe {
     private int id;
     @Column(name = "nom")
     private String nom;
-    @OneToMany(mappedBy = "groupe")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            schema = "OVAJ",
+            name = "groupe_eleve",
+            joinColumns = {
+                @JoinColumn(name = "id_groupe")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "id_eleve")}
+    )
     private List<Eleve> eleves;
+
     @OneToMany(mappedBy = "groupe")
     private List<Bdd> bdd;
 
@@ -47,6 +61,7 @@ public class Groupe {
 
     public Groupe(String nom) {
         this.nom = nom;
+        this.eleves = new ArrayList<Eleve>();
     }
 
     public Groupe(String nom, List<Eleve> eleves) {
@@ -66,20 +81,19 @@ public class Groupe {
         return eleves;
     }
 
-    public void setEleves(ArrayList<Eleve> eleves) {
+    public void setEleves(List<Eleve> eleves) {
         this.eleves = eleves;
     }
 
     public void addEleve(Eleve e) {
         this.eleves.add(e);
-        e.setGroupe(this);
     }
 
     public List<Bdd> getBdd() {
         return bdd;
     }
 
-    public void setBdd(ArrayList<Bdd> bdd) {
+    public void setBdd(List<Bdd> bdd) {
         this.bdd = bdd;
     }
 

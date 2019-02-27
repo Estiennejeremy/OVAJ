@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import project_asi_1.Classes.DAO.EleveDAO;
+import project_asi_1.Classes.DAO.GroupeDAO;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.Groupe;
 
@@ -29,9 +30,13 @@ public class Project_ASI_1 {
 
         Eleve e = new Eleve("test", "test2", "test3", "test4");
         Groupe g = new Groupe("yes");
-        g.addEleve(e);
+        GroupeDAO grd = new GroupeDAO();
         EleveDAO d = new EleveDAO();
+        g.addEleve(e);
         d.saveEleve(e);
+        grd.refresh(g);
+
+        System.exit(0);
 
     }
 }
