@@ -5,13 +5,14 @@
  */
 package project_asi_1.Classes;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,15 +31,23 @@ public class Repo {
     private String nom;
     @Column(name = "path")
     private String path;
-    @OneToOne
-    @JoinColumn(name = "repo_id_groupe", referencedColumnName = "id_groupe")
-    private Groupe groupe;
+    @OneToMany(mappedBy = "repo")
+    private List<Groupe> groupe;
+
+    public Repo() {
+    }
 
     public Repo(int id, String nom, String path, Groupe groupe) {
         this.id = id;
         this.nom = nom;
         this.path = path;
-        this.groupe = groupe;
+        this.groupe = new ArrayList<Groupe>();
+    }
+
+    public Repo(String nom, String path, Groupe groupe) {
+        this.nom = nom;
+        this.path = path;
+        this.groupe = new ArrayList<Groupe>();
     }
 
     public int getId() {
@@ -65,11 +74,11 @@ public class Repo {
         this.path = path;
     }
 
-    public Groupe getGroupe() {
+    public List<Groupe> getGroupe() {
         return groupe;
     }
 
-    public void setGroupe(Groupe groupe) {
+    public void setGroupe(List<Groupe> groupe) {
         this.groupe = groupe;
     }
 

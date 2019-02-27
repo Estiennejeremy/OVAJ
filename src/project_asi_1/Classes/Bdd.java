@@ -39,6 +39,11 @@ public class Bdd {
         this.groupe = groupe;
     }
 
+    public Bdd(String nom, Groupe groupe) {
+        this.nom = nom;
+        this.groupe = groupe;
+    }
+
     public int getId() {
         return id;
     }
