@@ -23,9 +23,19 @@ import project_asi_1.Classes.utils.HibernateUtils;
  */
 public class BddDAO {
 
+    private Session getSession() {
+        Session session = null;
+        if (HibernateUtils.getSessionFactory().getCurrentSession().isOpen()) {
+            session = HibernateUtils.getSessionFactory().getCurrentSession();
+        } else {
+            session = HibernateUtils.getSessionFactory().openSession();
+        }
+        return session;
+    }
+
     public void saveBdd(Bdd bdd) {
         Transaction transaction = null;
-        Session session = HibernateUtils.getSessionFactory().openSession();
+        Session session = getSession();
         transaction = session.beginTransaction();
         session.save(bdd);
         transaction.commit();

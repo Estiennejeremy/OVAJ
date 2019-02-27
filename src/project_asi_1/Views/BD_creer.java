@@ -159,6 +159,9 @@ public class BD_creer extends javax.swing.JPanel {
         Frame.getFrames()[0].remove(this);
         Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_creer());
         Frame.getFrames()[0].setVisible(true);
+//        Bdd bdd = new Bdd(lblBD_nom.getText(), comboboxBD_user.getSelectedItem());
+//        BddDAO bd = new BddDAO();
+//        bd.saveBdd(bdd);
     }//GEN-LAST:event_btnBD_validerActionPerformed
 
     private void textBD_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBD_nomActionPerformed
