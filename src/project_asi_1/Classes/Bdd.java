@@ -5,9 +5,6 @@
  */
 package project_asi_1.Classes;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import project_asi_1.Classes.utils.Prop;
 
 /**
  *
@@ -65,24 +61,6 @@ public class Bdd {
 
     public void setGroupe(Groupe groupe) {
         this.groupe = groupe;
-    }
-
-    public void generateBd() throws IOException, SQLException {
-        Ssh ssh = new Ssh();
-        String SQLRequest = "";
-        ArrayList<String> commands = new ArrayList<String>();
-        commands.add("mysql -u root -p");
-        commands.add(Prop.getmdpBdd());
-
-        SQLRequest = "CREATE SCHEMA " + groupe.getNom() + ";";
-        for (Eleve e : groupe.getEleves()) {
-            SQLRequest = SQLRequest + " GRANT ALL PRIVILEGES ON database " + groupe.getNom() + ".* TO '" + e.getAbreviation() + "'@'" + Prop.getHoteBdd() + "';";
-            System.out.println("GRANT ALL PRIVILEGES ON database " + groupe.getNom() + ".* TO '" + e.getAbreviation() + "'@'" + Prop.getHoteBdd() + "';");
-        }
-        SQLRequest = SQLRequest + " exit";
-        commands.add(SQLRequest);
-        ssh.sshCommand(commands);
-
     }
 
 }

@@ -5,10 +5,16 @@
  */
 package project_asi_1.Classes.DAO;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import project_asi_1.Classes.Bdd;
+import project_asi_1.Classes.Eleve;
+import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.utils.HibernateUtils;
 
 /**
@@ -42,4 +48,21 @@ public class BddDAO {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return (List<Bdd>) session.createQuery("from bdd").list();
     }
+
+    public void generateBd(Groupe g) throws IOException, SQLException {
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        String SQLRequest = "";
+        SQLRequest = "CREATE SCHEMA " + g.getNom() + timeStamp + ";";
+        for (Eleve e : g.getEleves()) {
+            SQLRequest = SQLRequest + " GRANT ALL PRIVILEGES ON database " + g.getNom() + timeStamp + ".* TO '" + e.getAbreviation() + "'@'127.0.0.1';";
+        }
+        session.beginTransaction();
+        session.createSQLQuery(SQLRequest).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
 }
