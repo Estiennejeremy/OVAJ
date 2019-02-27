@@ -36,8 +36,8 @@ public class RepoDAO {
     }
 
     public List<Repo> getRepos() {
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        return (List<Repo>) session.createQuery("from repo").list();
+        Session session = getSession();
+        return (List<Repo>) session.createQuery("from " + Repo.class.getName()).list();
     }
 
     public void refresh(Repo repo) {
@@ -49,7 +49,7 @@ public class RepoDAO {
     }
 
     public Repo getOneRepo(Repo repo) {
-        Session session = HibernateUtils.getSessionFactory().openSession();
+        Session session = getSession();
         return (Repo) session.get(Repo.class, repo.getId());
     }
 }

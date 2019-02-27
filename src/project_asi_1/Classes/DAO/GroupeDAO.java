@@ -43,12 +43,12 @@ public class GroupeDAO {
     }
 
     public Groupe getOneGroupe(Groupe groupe) {
-        Session session = HibernateUtils.getSessionFactory().openSession();
+        Session session = getSession();
         return (Groupe) session.get(Groupe.class, groupe.getId());
     }
 
     public List<Groupe> getGroupes() {
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        return (List<Groupe>) session.createQuery("from groupe").list();
+        Session session = getSession();
+        return (List<Groupe>) session.createQuery("from " + Groupe.class.getName()).list();
     }
 }

@@ -56,7 +56,7 @@ public class BddDAO {
 
     public List<Bdd> getBdd() {
         Session session = HibernateUtils.getSessionFactory().openSession();
-        return (List<Bdd>) session.createQuery("from bdd").list();
+        return (List<Bdd>) session.createQuery("from " + Bdd.class.getName()).list();
     }
 
     public void generateBd(Groupe g) throws IOException, SQLException {
