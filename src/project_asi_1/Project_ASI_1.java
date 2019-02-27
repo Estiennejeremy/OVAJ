@@ -1,4 +1,3 @@
-
 package project_asi_1;
 
 import java.io.IOException;
@@ -30,9 +29,9 @@ public class Project_ASI_1 {
 
         Eleve e = new Eleve("test", "test2", "test3", "test4");
         Groupe g = new Groupe("yes");
+        g.addEleve(e);
         EleveDAO d = new EleveDAO();
         d.saveEleve(e);
 
     }
 }
-

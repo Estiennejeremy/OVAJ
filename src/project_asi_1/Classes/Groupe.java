@@ -83,7 +83,7 @@ public class Groupe {
         this.bdd = bdd;
     }
 
-    public void addEleve(Bdd b) {
+    public void addBdd(Bdd b) {
         this.bdd.add(b);
     }
 
