@@ -32,8 +32,8 @@ public class Project_ASI_1 {
         myFrame.add(new project_asi_1.Views.accueil());
         myFrame.setVisible(true);
 
-        Eleve e = new Eleve("Lucas", "Roux", "lucas@roux.com", "lroux");
-        Eleve e1 = new Eleve("Jeremy", "Estienne", "jeremy@estienne", "jestienne");
+        Eleve e = new Eleve("Lucas", "Roux", "lucas@roux.com");
+        Eleve e1 = new Eleve("Jeremy", "Estienne", "jeremy@estienne");
         Groupe g = new Groupe("ASI1");
         Groupe g1 = new Groupe("ASI2");
         Repo r = new Repo("repoASI1", "path/repoAS1", g);
