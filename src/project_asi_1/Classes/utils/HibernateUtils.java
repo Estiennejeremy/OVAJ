@@ -27,9 +27,9 @@ public class HibernateUtils {
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://127.0.0.1:3306?useSSL=false&serverTimezone=UTC");
-                settings.put(Environment.USER, "root");
-                settings.put(Environment.PASS, "");
+                settings.put(Environment.URL, "jdbc:mysql://" + Prop.getHoteBdd() + ":" + Prop.getHotePort() + "?useSSL=false&serverTimezone=UTC");
+                settings.put(Environment.USER, Prop.getUserBdd());
+                settings.put(Environment.PASS, Prop.getmdpBdd());
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");

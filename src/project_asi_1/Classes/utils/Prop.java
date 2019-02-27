@@ -66,4 +66,8 @@ public abstract class Prop {
         return getProp().getProperty("app.userBdd");
     }
 
+    public static String getHotePort() {
+        return getProp().getProperty("app.userBddPort");
+    }
+
 }
