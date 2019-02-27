@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -48,6 +49,9 @@ public class Groupe {
 
     @OneToMany(mappedBy = "groupe")
     private List<Bdd> bdd;
+
+    @ManyToOne
+    private Repo repo;
 
     @Column(name = "creation_date")
     private Date dateCreation = new Date();

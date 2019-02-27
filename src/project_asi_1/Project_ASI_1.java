@@ -3,10 +3,14 @@ package project_asi_1;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import project_asi_1.Classes.Bdd;
+import project_asi_1.Classes.DAO.BddDAO;
 import project_asi_1.Classes.DAO.EleveDAO;
 import project_asi_1.Classes.DAO.GroupeDAO;
+import project_asi_1.Classes.DAO.RepoDAO;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.Groupe;
+import project_asi_1.Classes.Repo;
 
 /**
  *
@@ -28,15 +32,29 @@ public class Project_ASI_1 {
         myFrame.add(new project_asi_1.Views.accueil());
         myFrame.setVisible(true);
 
-        Eleve e = new Eleve("test", "test2", "test3", "test4");
-        Groupe g = new Groupe("yes");
+        Eleve e = new Eleve("Lucas", "Roux", "lucas@roux.com", "lroux");
+        Eleve e1 = new Eleve("Jeremy", "Estienne", "jeremy@estienne", "jestienne");
+        Groupe g = new Groupe("ASI1");
+        Groupe g1 = new Groupe("ASI2");
+        Repo r = new Repo("repoASI1", "path/repoAS1", g);
+        Repo r1 = new Repo("repoASI2", "path/repoAS2", g1);
+        Bdd bd = new Bdd("bddASI1", g);
+        Bdd bd1 = new Bdd("bddASI2", g1);
         GroupeDAO grd = new GroupeDAO();
         EleveDAO d = new EleveDAO();
+        RepoDAO rdao = new RepoDAO();
+        BddDAO bdddao = new BddDAO();
         g.addEleve(e);
+        g.addEleve(e1);
         d.saveEleve(e);
-        grd.refresh(g);
+        d.saveEleve(e1);
+        grd.saveGroupe(g);
+        grd.saveGroupe(g1);
+        rdao.saveRepo(r);
+        rdao.saveRepo(r1);
+        bdddao.saveBdd(bd);
+        bdddao.saveBdd(bd1);
 
-        System.exit(0);
-
+        //System.exit(0);
     }
 }

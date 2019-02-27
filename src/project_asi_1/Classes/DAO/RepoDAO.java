@@ -17,9 +17,19 @@ import project_asi_1.Classes.utils.HibernateUtils;
  */
 public class RepoDAO {
 
+    private Session getSession() {
+        Session session = null;
+        if (HibernateUtils.getSessionFactory().getCurrentSession().isOpen()) {
+            session = HibernateUtils.getSessionFactory().getCurrentSession();
+        } else {
+            session = HibernateUtils.getSessionFactory().openSession();
+        }
+        return session;
+    }
+
     public void saveRepo(Repo repo) {
         Transaction transaction = null;
-        Session session = HibernateUtils.getSessionFactory().openSession();
+        Session session = getSession();
         transaction = session.beginTransaction();
         session.save(repo);
         transaction.commit();
