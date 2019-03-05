@@ -82,4 +82,25 @@ public class RepoDAO {
 
     }
 
+    public void addEleveOnRepo(Eleve el, Groupe g) throws IOException, SQLException {
+        try {
+            Ssh ssh = new Ssh();
+            ArrayList<String> commands = new ArrayList<String>();
+            commands.add("cd " + Prop.getSvnPath());
+
+            commands.add("cd " + g.getNom() + "/conf");
+
+            commands.add("echo '" + el.getAbreviation() + " = " + el.getPwd() + "' >> passwd");
+
+            for (String command : commands) {
+                System.out.println(command);
+            }
+            ssh.sshCommand(commands);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
 }
