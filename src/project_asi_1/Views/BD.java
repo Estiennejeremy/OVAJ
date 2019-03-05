@@ -24,11 +24,11 @@ public class BD extends javax.swing.JPanel {
 
     private void remplirList() {
         BddDAO bd = new BddDAO();
-        List<> b = new List();
-        b = bd.getBdd();
-        for (BD base : b) {
-            listBD_bd.add(base);
-        }
+//        List<> b = new List();
+//        b = bd.getBdd();
+//        for (BD base : b) {
+//            listBD_bd.add(base);
+//        }
     }
 
     /**

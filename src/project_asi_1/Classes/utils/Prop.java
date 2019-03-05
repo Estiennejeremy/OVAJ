@@ -18,7 +18,7 @@ import java.util.Properties;
  */
 public abstract class Prop {
 
-    public static boolean devMode = true;
+    public static boolean devMode = false;
 
     private static Properties getProp() {
         Properties prop = new Properties();
@@ -49,6 +49,14 @@ public abstract class Prop {
             return getProp().getProperty("dev.hoteSsh");
         } else {
             return getProp().getProperty("prod.hoteSsh");
+        }
+    }
+
+    public static String getSvnPath() {
+        if (devMode) {
+            return getProp().getProperty("dev.svnPath");
+        } else {
+            return getProp().getProperty("prod.svnPath");
         }
     }
 
