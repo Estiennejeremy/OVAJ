@@ -74,9 +74,9 @@ public class Ssh {
                 if (test == "") {
                     test = command;
                 } else {
-                    test = test + " && " + command;
+                    test = test + "\n" + command;
                 }
-                System.out.println("commands exect" + command);
+                System.out.println("commands exect " + command);
             }
             test = test + " && cd ";
             System.out.println(test);
@@ -88,4 +88,5 @@ public class Ssh {
             }
         }
     }
+
 }
