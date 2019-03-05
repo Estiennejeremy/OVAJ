@@ -16,6 +16,7 @@ import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.Repo;
 import project_asi_1.Classes.Ssh;
 import project_asi_1.Classes.utils.HibernateUtils;
+import project_asi_1.Classes.utils.Prop;
 
 /**
  *
@@ -63,7 +64,7 @@ public class RepoDAO {
         try {
             Ssh ssh = new Ssh();
             ArrayList<String> commands = new ArrayList<String>();
-            commands.add("cd svn");
+            commands.add("cd " + Prop.getSvnPath());
             commands.add("svnadmin create --fs-type fsfs " + g.getNom());
             commands.add("cd " + g.getNom() + "/conf");
             for (Eleve eleve : g.getEleves()) {
