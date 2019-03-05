@@ -5,7 +5,8 @@
  */
 package project_asi_1.Views;
 
-import java.awt.Frame;
+import java.awt.*;
+import project_asi_1.Classes.DAO.BddDAO;
 
 /**
  *
@@ -18,6 +19,16 @@ public class BD extends javax.swing.JPanel {
      */
     public BD() {
         initComponents();
+        remplirList();
+    }
+
+    private void remplirList() {
+        BddDAO bd = new BddDAO();
+        List<> b = new List();
+        b = bd.getBdd();
+        for (BD base : b) {
+            listBD_bd.add(base);
+        }
     }
 
     /**
