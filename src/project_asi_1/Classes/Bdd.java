@@ -5,6 +5,7 @@
  */
 package project_asi_1.Classes;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "bdd", schema = "OVAJ")
-public class Bdd {
+public class Bdd implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,6 +67,11 @@ public class Bdd {
 
     public void setGroupe(Groupe groupe) {
         this.groupe = groupe;
+    }
+
+    @Override
+    public String toString() {
+        return nom;
     }
 
 }

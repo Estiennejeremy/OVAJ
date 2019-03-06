@@ -5,8 +5,13 @@
  */
 package project_asi_1.Views;
 
-import java.awt.*;
+import java.awt.Frame;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import project_asi_1.Classes.Bdd;
 import project_asi_1.Classes.DAO.BddDAO;
+import project_asi_1.Classes.DAO.GroupeDAO;
+import project_asi_1.Classes.Groupe;
 
 /**
  *
@@ -19,15 +24,27 @@ public class BD extends javax.swing.JPanel {
      */
     public BD() {
         initComponents();
-        remplirList();
+        remplirListBD();
+        remplirListGroupe();
     }
 
-    private void remplirList() {
-        BddDAO bd = new BddDAO();
-        List<> b = new List();
-        b = bd.getBdd();
-        for (BD base : b) {
-            listBD_bd.add(base);
+    private void remplirListBD() {
+        BddDAO d = new BddDAO();
+        List<Bdd> b = d.getBdd();
+        DefaultListModel dlm = new DefaultListModel();
+        listBD_bd.setModel(dlm);
+        for (Bdd bdd : b) {
+            dlm.addElement(bdd);
+        }
+    }
+
+    private void remplirListGroupe() {
+        GroupeDAO g = new GroupeDAO();
+        List<Groupe> gr = g.getGroupes();
+        DefaultListModel dlmGr = new DefaultListModel();
+        listBD_eleve.setModel(dlmGr);
+        for (Groupe groupe : gr) {
+            dlmGr.addElement(groupe);
         }
     }
 
@@ -66,11 +83,6 @@ public class BD extends javax.swing.JPanel {
         });
 
         listBD_eleve.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        listBD_eleve.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Eleve1", "Eleve2", "Eleve3", "Eleve4", "Eleve5", "Eleve6" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(listBD_eleve);
 
         txtBD_search.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -86,11 +98,6 @@ public class BD extends javax.swing.JPanel {
         btnBD_loupe.setText("<html>&#128269;</html>");
 
         listBD_bd.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        listBD_bd.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "BD1", "BD2", "BD3", "BD4" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(listBD_bd);
 
         btnBD_creer.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N

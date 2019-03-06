@@ -127,7 +127,7 @@ public class Eleve {
 
     @Override
     public String toString() {
-        return this.getNom() + " " + this.getPrenom(); //To change body of generated methods, choose Tools | Templates.
+        return nom;
     }
 
 }

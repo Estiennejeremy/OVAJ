@@ -56,9 +56,12 @@ public class BddDAO {
 
     public List<Bdd> getBdd() {
         Session session = HibernateUtils.getSessionFactory().openSession();
-        return (List<Bdd>) session.createQuery("from bdd").list();
+        return (List<Bdd>) session.createQuery("from Bdd").list();
     }
 
+    /**
+     * Créer une base de donnée sur le serveur
+     */
     public void generateBd(Groupe g) throws IOException, SQLException {
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());

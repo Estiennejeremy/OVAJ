@@ -49,6 +49,6 @@ public class GroupeDAO {
 
     public List<Groupe> getGroupes() {
         Session session = HibernateUtils.getSessionFactory().openSession();
-        return (List<Groupe>) session.createQuery("from groupe").list();
+        return (List<Groupe>) session.createQuery("from Groupe").list();
     }
 }
