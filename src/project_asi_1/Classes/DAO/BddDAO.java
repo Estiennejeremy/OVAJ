@@ -60,6 +60,9 @@ public class BddDAO {
         return (List<Bdd>) session.createQuery("from " + Bdd.class.getName()).list();
     }
 
+    /**
+     * Créer une base de donnée sur le serveur
+     */
     public void generateBd(Groupe g) throws IOException, SQLException {
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
