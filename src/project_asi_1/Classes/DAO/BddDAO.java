@@ -41,12 +41,19 @@ public class BddDAO {
         transaction.commit();
     }
 
+    public void deleteBdd(Bdd bdd) {
+        Transaction transaction = null;
+        Session session = getSession();
+        transaction = session.beginTransaction();
+        session.delete(bdd);
+        transaction.commit();
+    }
+
     public void refresh(Bdd bdd) {
         Transaction transaction = null;
         transaction = HibernateUtils.getSessionFactory().getCurrentSession().beginTransaction();
         HibernateUtils.getSessionFactory().getCurrentSession().merge(bdd);
         transaction.commit();
-
     }
 
     public Bdd getOneBdd(Bdd bdd) {
