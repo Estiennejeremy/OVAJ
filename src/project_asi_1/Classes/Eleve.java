@@ -7,6 +7,7 @@ package project_asi_1.Classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,11 +56,23 @@ public class Eleve {
         this.groupes = groupes;
     }
 
-    public Eleve(String nom, String prenom, String mail, String pwd) {
+    public Eleve(String nom, String prenom, String mail) {
+
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 10;
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++) {
+            int randomLimitedInt = leftLimit + (int) (random.nextFloat() * (rightLimit - leftLimit + 1));
+            buffer.append((char) randomLimitedInt);
+        }
+
+        String generatedString = buffer.toString();
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
-        this.pwd = pwd;
+        this.pwd = generatedString;
         this.abreviation = prenom.charAt(0) + nom;
         this.groupes = new ArrayList<Groupe>();
 

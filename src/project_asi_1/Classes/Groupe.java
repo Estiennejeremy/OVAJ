@@ -6,6 +6,7 @@
 package project_asi_1.Classes;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -52,7 +53,18 @@ public class Groupe {
     @ManyToOne
     private Repo repo;
 
+    @Column(name = "creation_date")
+    private Date dateCreation = new Date();
+
     public Groupe() {
+    }
+
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
     public int getId() {

@@ -37,7 +37,7 @@ public class EleveDAO {
 
     public List<Eleve> getEleves() {
         Session session = HibernateUtils.getSessionFactory().openSession();
-        return (List<Eleve>) session.createQuery("from Eleve").list();
+        return (List<Eleve>) session.createQuery("from " + Eleve.class.getName()).list();
     }
 
     public void refresh(Eleve eleve) {

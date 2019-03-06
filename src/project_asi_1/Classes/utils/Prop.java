@@ -18,6 +18,8 @@ import java.util.Properties;
  */
 public abstract class Prop {
 
+    public static boolean devMode = false;
+
     private static Properties getProp() {
         Properties prop = new Properties();
         try {
@@ -43,27 +45,68 @@ public abstract class Prop {
     }
 
     public static String getHoteSsh() {
-        return getProp().getProperty("app.hoteSsh");
+        if (devMode) {
+            return getProp().getProperty("dev.hoteSsh");
+        } else {
+            return getProp().getProperty("prod.hoteSsh");
+        }
+    }
+
+    public static String getSvnPath() {
+        if (devMode) {
+            return getProp().getProperty("dev.svnPath");
+        } else {
+            return getProp().getProperty("prod.svnPath");
+        }
     }
 
     public static String getmdpSsh() {
-        return getProp().getProperty("app.mdpSsh");
+        if (devMode) {
+            return getProp().getProperty("dev.mdpSsh");
+        } else {
+            return getProp().getProperty("prod.mdpSsh");
+        }
     }
 
     public static String getUserSsh() {
-        return getProp().getProperty("app.userSsh");
+        if (devMode) {
+            return getProp().getProperty("dev.userSsh");
+        } else {
+            return getProp().getProperty("prod.userSsh");
+        }
     }
 
     public static String getHoteBdd() {
-        return getProp().getProperty("app.hoteBdd");
+        if (devMode) {
+            return getProp().getProperty("dev.hoteBdd");
+        } else {
+            return getProp().getProperty("prod.hoteBdd");
+        }
     }
 
     public static String getmdpBdd() {
-        return getProp().getProperty("app.mdpBdd");
+        if (devMode) {
+            return getProp().getProperty("dev.mdpBdd");
+        } else {
+            return getProp().getProperty("prod.mdpBdd");
+        }
+
     }
 
     public static String getUserBdd() {
-        return getProp().getProperty("app.userBdd");
+        if (devMode) {
+            return getProp().getProperty("dev.userBdd");
+        } else {
+            return getProp().getProperty("prod.userBdd");
+        }
+    }
+
+    public static String getBddPort() {
+        if (devMode) {
+            return getProp().getProperty("dev.bddPort");
+        } else {
+            return getProp().getProperty("prod.bddPort");
+        }
     }
 
 }
