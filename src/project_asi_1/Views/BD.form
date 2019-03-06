@@ -141,14 +141,7 @@
               <Font name="Tahoma" size="36" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="Eleve1"/>
-                <StringItem index="1" value="Eleve2"/>
-                <StringItem index="2" value="Eleve3"/>
-                <StringItem index="3" value="Eleve4"/>
-                <StringItem index="4" value="Eleve5"/>
-                <StringItem index="5" value="Eleve6"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -192,12 +185,7 @@
               <Font name="Tahoma" size="36" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="BD1"/>
-                <StringItem index="1" value="BD2"/>
-                <StringItem index="2" value="BD3"/>
-                <StringItem index="3" value="BD4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
