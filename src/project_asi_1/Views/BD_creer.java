@@ -6,6 +6,12 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import project_asi_1.Classes.Bdd;
+import project_asi_1.Classes.DAO.BddDAO;
+import project_asi_1.Classes.DAO.GroupeDAO;
+import project_asi_1.Classes.Groupe;
 
 /**
  *
@@ -18,6 +24,17 @@ public class BD_creer extends javax.swing.JPanel {
      */
     public BD_creer() {
         initComponents();
+        remplirComboGroupe();
+    }
+
+    private void remplirComboGroupe() {
+        GroupeDAO g = new GroupeDAO();
+        List<Groupe> gr = g.getGroupes();
+        DefaultComboBoxModel dcm = new DefaultComboBoxModel();
+        comboboxBD_user.setModel(dcm);
+        for (Groupe groupe : gr) {
+            dcm.addElement(groupe);
+        }
     }
 
     /**
@@ -73,7 +90,11 @@ public class BD_creer extends javax.swing.JPanel {
         });
 
         comboboxBD_user.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        comboboxBD_user.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Coucou", "ça", "va", "?" }));
+        comboboxBD_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxBD_userActionPerformed(evt);
+            }
+        });
 
         lblBD_BD.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblBD_BD.setText("Base de données");
@@ -159,9 +180,10 @@ public class BD_creer extends javax.swing.JPanel {
         Frame.getFrames()[0].remove(this);
         Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_creer());
         Frame.getFrames()[0].setVisible(true);
-//        Bdd bdd = new Bdd(lblBD_nom.getText(), comboboxBD_user.getSelectedItem());
-//        BddDAO bd = new BddDAO();
-//        bd.saveBdd(bdd);
+        Groupe p = (Groupe) comboboxBD_user.getModel().getSelectedItem();
+        Bdd bdd = new Bdd(textBD_nom.getText(), (Groupe) comboboxBD_user.getModel().getSelectedItem());
+        BddDAO bd = new BddDAO();
+        bd.saveBdd(bdd);
     }//GEN-LAST:event_btnBD_validerActionPerformed
 
     private void textBD_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBD_nomActionPerformed
@@ -180,11 +202,14 @@ public class BD_creer extends javax.swing.JPanel {
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
+    private void comboboxBD_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxBD_userActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboboxBD_userActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBD_retour;
     private javax.swing.JButton btnBD_valider;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnExit2;
     private javax.swing.JComboBox<String> comboboxBD_user;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblBD_BD;
