@@ -5,9 +5,6 @@
  */
 package project_asi_1.Classes;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import project_asi_1.Classes.utils.Prop;
 
 /**
  *
@@ -76,33 +72,6 @@ public class Repo {
 
     public void setGroupe(Groupe groupe) {
         this.groupe = groupe;
-    }
-
-    public void createRepo(Groupe g) throws IOException, SQLException {
-        try {
-
-            Ssh ssh = new Ssh();
-            ArrayList<String> commands = new ArrayList<String>();
-            commands.add("cd " + Prop.getSvnPath());
-            commands.add("svnadmin create --fs-type fsfs " + g.getNom());
-            commands.add("cd " + g.getNom() + "/conf");
-            for (Eleve eleve : g.getEleves()) {
-                commands.add("echo '" + eleve.getAbreviation() + " = " + eleve.getPwd() + "' >> passwd");
-            }
-            for (String command : commands) {
-                System.out.println(command);
-            }
-            ssh.sshCommand(commands);
-
-            this.setPath("svn://" + Prop.getHoteSsh() + "/" + Prop.getSvnPath() + "/" + g.getNom());
-            this.setGroupe(g);
-            this.setNom(g.getNom());
-
-        } catch (Exception e) {
-            System.out.println(e);
-
-        }
-
     }
 
 }

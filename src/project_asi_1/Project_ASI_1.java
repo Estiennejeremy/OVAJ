@@ -11,7 +11,6 @@ import project_asi_1.Classes.DAO.RepoDAO;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.Repo;
-import project_asi_1.Classes.utils.RepoUtils;
 
 /**
  *
@@ -45,11 +44,10 @@ public class Project_ASI_1 {
         RepoDAO rdao = new RepoDAO();
         Repo r = new Repo();
 
-        RepoUtils.AddEleveOnSvn(e1);
-
-        RepoUtils.createRepo(g, r);
-        RepoUtils.addEleveOnRepo(e1, g);
-
+//        RepoUtils.AddEleveOnSvn(e1);
+//
+//        RepoUtils.createRepo(g, r);
+//        RepoUtils.addEleveOnRepo(e1, g);
         BddDAO bdddao = new BddDAO();
         g.addEleve(e);
         g.addEleve(e1);
