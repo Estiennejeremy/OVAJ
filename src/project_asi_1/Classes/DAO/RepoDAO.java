@@ -5,18 +5,11 @@
  */
 package project_asi_1.Classes.DAO;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import project_asi_1.Classes.Eleve;
-import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.Repo;
-import project_asi_1.Classes.Ssh;
 import project_asi_1.Classes.utils.HibernateUtils;
-import project_asi_1.Classes.utils.Prop;
 
 /**
  *
@@ -58,49 +51,6 @@ public class RepoDAO {
     public Repo getOneRepo(Repo repo) {
         Session session = getSession();
         return (Repo) session.get(Repo.class, repo.getId());
-    }
-
-    public void createRepo(Groupe g) throws IOException, SQLException {
-        try {
-            Ssh ssh = new Ssh();
-            ArrayList<String> commands = new ArrayList<String>();
-            commands.add("cd " + Prop.getSvnPath());
-            commands.add("svnadmin create --fs-type fsfs " + g.getNom());
-            commands.add("cd " + g.getNom() + "/conf");
-            for (Eleve eleve : g.getEleves()) {
-                commands.add("echo '" + eleve.getAbreviation() + " = " + eleve.getPwd() + "' >> passwd");
-            }
-            for (String command : commands) {
-                System.out.println(command);
-            }
-            ssh.sshCommand(commands);
-
-        } catch (Exception e) {
-            System.out.println(e);
-
-        }
-
-    }
-
-    public void addEleveOnRepo(Eleve el, Groupe g) throws IOException, SQLException {
-        try {
-            Ssh ssh = new Ssh();
-            ArrayList<String> commands = new ArrayList<String>();
-            commands.add("cd " + Prop.getSvnPath());
-
-            commands.add("cd " + g.getNom() + "/conf");
-
-            commands.add("echo '" + el.getAbreviation() + " = " + el.getPwd() + "' >> passwd");
-
-            for (String command : commands) {
-                System.out.println(command);
-            }
-            ssh.sshCommand(commands);
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
     }
 
 }

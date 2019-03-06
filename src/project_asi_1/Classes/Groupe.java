@@ -5,6 +5,8 @@
  */
 package project_asi_1.Classes;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +20,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -50,8 +51,8 @@ public class Groupe {
     @OneToMany(mappedBy = "groupe")
     private List<Bdd> bdd;
 
-    @ManyToOne
-    private Repo repo;
+    @OneToMany(mappedBy = "groupe")
+    private List<Repo> repo;
 
     @Column(name = "creation_date")
     private Date dateCreation = new Date();
@@ -75,9 +76,10 @@ public class Groupe {
         this.id = id;
     }
 
-    public Groupe(String nom) {
+    public Groupe(String nom) throws IOException, SQLException {
         this.nom = nom;
         this.eleves = new ArrayList<Eleve>();
+
     }
 
     public Groupe(String nom, List<Eleve> eleves) {

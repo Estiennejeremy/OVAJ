@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -59,9 +60,6 @@ public class BddDAO {
         return (List<Bdd>) session.createQuery("from " + Bdd.class.getName()).list();
     }
 
-    /**
-     * Créer une base de donnée sur le serveur
-     */
     public void generateBd(Groupe g) throws IOException, SQLException {
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
@@ -79,14 +77,17 @@ public class BddDAO {
 
     }
 
-    public void createUser(Eleve e) {
+    public void changeNameBdd(Bdd bd, String newName) {
+
         Session session = HibernateUtils.getSessionFactory().openSession();
-        String SQLRequest = "CREATE USER '" + e.getAbreviation() + "'@'%' IDENTIFIED BY '" + e.getPwd() + "'; ";
+        String SQLRequest = "ALTER SCHEMA " + bd.getNom() + " RENAME TO " + newName + " ;";
         session.beginTransaction();
         session.createSQLQuery(SQLRequest).executeUpdate();
         session.getTransaction().commit();
         session.close();
+        bd.setNom(newName);
 
     }
 
 }
+
