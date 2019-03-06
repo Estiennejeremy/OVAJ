@@ -76,13 +76,15 @@ public class BddDAO {
 
     }
 
-    public void createUser(Eleve e) {
+    public void changeNameBdd(Bdd bd, String newName) {
+
         Session session = HibernateUtils.getSessionFactory().openSession();
-        String SQLRequest = "CREATE USER '" + e.getAbreviation() + "'@'%' IDENTIFIED BY '" + e.getPwd() + "'; ";
+        String SQLRequest = "ALTER SCHEMA " + bd.getNom() + " RENAME TO " + newName + " ;";
         session.beginTransaction();
         session.createSQLQuery(SQLRequest).executeUpdate();
         session.getTransaction().commit();
         session.close();
+        bd.setNom(newName);
 
     }
 

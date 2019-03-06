@@ -11,6 +11,7 @@ import project_asi_1.Classes.DAO.RepoDAO;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.Repo;
+import project_asi_1.Classes.utils.RepoUtils;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Project_ASI_1 {
      * @throws java.io.IOException
      * @throws java.sql.SQLException
      */
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws IOException, SQLException, InterruptedException {
 
         // TODO code application logic here
         JFrame myFrame = new JFrame("frame");
@@ -36,25 +37,33 @@ public class Project_ASI_1 {
         Eleve e1 = new Eleve("Jeremy", "Estienne", "jeremy@estienne");
         Groupe g = new Groupe("ASI1");
         Groupe g1 = new Groupe("ASI2");
-        Repo r = new Repo("repoASI1", "path/repoAS1", g);
-        Repo r1 = new Repo("repoASI2", "path/repoAS2", g1);
+
         Bdd bd = new Bdd("bddASI1", g);
         Bdd bd1 = new Bdd("bddASI2", g1);
         GroupeDAO grd = new GroupeDAO();
         EleveDAO d = new EleveDAO();
         RepoDAO rdao = new RepoDAO();
+        Repo r = new Repo();
+
+        RepoUtils.AddEleveOnSvn(e1);
+
+        RepoUtils.createRepo(g, r);
+        RepoUtils.addEleveOnRepo(e1, g);
+
         BddDAO bdddao = new BddDAO();
         g.addEleve(e);
         g.addEleve(e1);
+
         d.saveEleve(e);
         d.saveEleve(e1);
         grd.saveGroupe(g);
         grd.saveGroupe(g1);
         rdao.saveRepo(r);
-        rdao.saveRepo(r1);
         bdddao.saveBdd(bd);
         bdddao.saveBdd(bd1);
 
-        //System.exit(0);
+        System.out.println(d.getEleves());
+
+        System.exit(0);
     }
 }

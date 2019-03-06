@@ -52,4 +52,14 @@ public class EleveDAO {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return (Eleve) session.get(Eleve.class, eleve.getId());
     }
+
+    public void createUser(Eleve e) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        String SQLRequest = "CREATE USER '" + e.getAbreviation() + "'@'%' IDENTIFIED BY '" + e.getPwd() + "'; ";
+        session.beginTransaction();
+        session.createSQLQuery(SQLRequest).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
+    }
 }
