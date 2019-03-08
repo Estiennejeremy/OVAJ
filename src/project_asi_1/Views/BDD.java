@@ -29,8 +29,7 @@ public class BDD extends javax.swing.JPanel {
     }
 
     private void remplirListBD() {
-        BddDAO d = new BddDAO();
-        List<Bdd> b = d.getBdd();
+        List<Bdd> b = BddDAO.getBdd();
         DefaultListModel dlm = new DefaultListModel();
         listBD_bd.setModel(dlm);
         for (Bdd bdd : b) {
@@ -39,8 +38,7 @@ public class BDD extends javax.swing.JPanel {
     }
 
     private void remplirListGroupe() {
-        GroupeDAO g = new GroupeDAO();
-        List<Groupe> gr = g.getGroupes();
+        List<Groupe> gr = GroupeDAO.getGroupes();
         DefaultListModel dlmGr = new DefaultListModel();
         listBD_eleve.setModel(dlmGr);
         for (Groupe groupe : gr) {
@@ -223,10 +221,9 @@ public class BDD extends javax.swing.JPanel {
         Frame.getFrames()[0].setVisible(true);
 
         //        Bdd b = listBD_bd.getModel().getSelectedItem();
-        BddDAO bdDao = new BddDAO();
 //        Bdd cacahuete;
 //        cacahuete = bdDao.getOneBdd();
-        bdDao.deleteBdd(listBD_bd.getSelectedValuesList().get(0));
+        BddDAO.deleteBdd(listBD_bd.getSelectedValuesList().get(0));
         System.out.println(listBD_bd.getSelectedValuesList().get(0));
     }
 

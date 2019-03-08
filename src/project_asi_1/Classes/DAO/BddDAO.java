@@ -36,7 +36,7 @@ public abstract class BddDAO {
         transaction.commit();
     }
 
-    public void deleteBdd(Bdd bdd) {
+    public static void deleteBdd(Bdd bdd) {
         Transaction transaction = null;
         Session session = getSession();
         transaction = session.beginTransaction();
@@ -44,7 +44,7 @@ public abstract class BddDAO {
         transaction.commit();
     }
 
-    public void refresh(Bdd bdd) {
+    public static void refresh(Bdd bdd) {
         Transaction transaction = null;
         transaction = HibernateUtils.getSessionFactory().getCurrentSession().beginTransaction();
         HibernateUtils.getSessionFactory().getCurrentSession().merge(bdd);
