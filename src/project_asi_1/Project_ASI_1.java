@@ -39,28 +39,24 @@ public class Project_ASI_1 {
 
         Bdd bd = new Bdd("bddASI1", g);
         Bdd bd1 = new Bdd("bddASI2", g1);
-        GroupeDAO grd = new GroupeDAO();
-        EleveDAO d = new EleveDAO();
-        RepoDAO rdao = new RepoDAO();
         Repo r = new Repo();
 
 //        RepoUtils.AddEleveOnSvn(e1);
 //
 //        RepoUtils.createRepo(g, r);
 //        RepoUtils.addEleveOnRepo(e1, g);
-        BddDAO bdddao = new BddDAO();
         g.addEleve(e);
         g.addEleve(e1);
 
-        d.saveEleve(e);
-        d.saveEleve(e1);
-        grd.saveGroupe(g);
-        grd.saveGroupe(g1);
-        rdao.saveRepo(r);
-        bdddao.saveBdd(bd);
-        bdddao.saveBdd(bd1);
+        EleveDAO.saveEleve(e);
+        EleveDAO.saveEleve(e1);
+        GroupeDAO.saveGroupe(g);
+        GroupeDAO.saveGroupe(g1);
+        RepoDAO.saveRepo(r);
+        BddDAO.saveBdd(bd);
+        BddDAO.saveBdd(bd1);
 
-        System.out.println(d.getEleves());
+        System.out.println(EleveDAO.getEleves());
 
         System.exit(0);
     }

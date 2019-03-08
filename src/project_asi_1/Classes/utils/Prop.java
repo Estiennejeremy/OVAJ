@@ -18,7 +18,7 @@ import java.util.Properties;
  */
 public abstract class Prop {
 
-    public static boolean devMode = false;
+    public static boolean devMode = false; // passe en mode dev ou non
 
     private static Properties getProp() {
         Properties prop = new Properties();

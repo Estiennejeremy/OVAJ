@@ -15,9 +15,9 @@ import project_asi_1.Classes.utils.HibernateUtils;
  *
  * @author Lucas
  */
-public class RepoDAO {
+public abstract class RepoDAO {
 
-    private Session getSession() {
+    private static Session getSession() {
         Session session = null;
         if (HibernateUtils.getSessionFactory().getCurrentSession().isOpen()) {
             session = HibernateUtils.getSessionFactory().getCurrentSession();
@@ -27,7 +27,7 @@ public class RepoDAO {
         return session;
     }
 
-    public void saveRepo(Repo repo) {
+    public static void saveRepo(Repo repo) {
         Transaction transaction = null;
         Session session = getSession();
         transaction = session.beginTransaction();
@@ -35,12 +35,12 @@ public class RepoDAO {
         transaction.commit();
     }
 
-    public List<Repo> getRepos() {
+    public static List<Repo> getRepos() {
         Session session = getSession();
         return (List<Repo>) session.createQuery("from " + Repo.class.getName()).list();
     }
 
-    public void refresh(Repo repo) {
+    public static void refresh(Repo repo) {
         Transaction transaction = null;
         transaction = HibernateUtils.getSessionFactory().getCurrentSession().beginTransaction();
         HibernateUtils.getSessionFactory().getCurrentSession().merge(repo);
@@ -48,7 +48,7 @@ public class RepoDAO {
 
     }
 
-    public Repo getOneRepo(Repo repo) {
+    public static Repo getOneRepo(Repo repo) {
         Session session = getSession();
         return (Repo) session.get(Repo.class, repo.getId());
     }

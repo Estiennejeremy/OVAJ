@@ -19,7 +19,7 @@ import project_asi_1.Classes.Ssh;
  */
 public abstract class RepoUtils {
 
-    public static void addEleveOnRepo(Eleve el, Groupe g) throws IOException, SQLException {
+    public static void addEleveOnRepo(Eleve el, Groupe g) throws IOException, SQLException { //ajouter des eleve sur un repository
         try {
             Ssh ssh = new Ssh();
             ArrayList<String> commands = new ArrayList<String>();
@@ -40,7 +40,7 @@ public abstract class RepoUtils {
 
     }
 
-    public static void AddEleveOnSvn(Eleve eleve) throws IOException, SQLException {
+    public static void AddEleveOnSvn(Eleve eleve) throws IOException, SQLException { // ajoute un eleve dans la liste des user svn
         try {
             Ssh ssh = new Ssh();
             ArrayList<String> commands = new ArrayList<String>();
@@ -57,7 +57,7 @@ public abstract class RepoUtils {
 
     }
 
-    public static void createRepo(Groupe g, Repo repo) throws IOException, SQLException {
+    public static void createRepo(Groupe g, Repo repo) throws IOException, SQLException { //cree un repository
         try {
 
             Ssh ssh = new Ssh();
@@ -80,6 +80,24 @@ public abstract class RepoUtils {
         } catch (Exception e) {
             System.out.println(e);
 
+        }
+
+    }
+
+    public static void DeleteRepo(Repo repo) throws IOException, SQLException { // supprime un repository
+        try {
+            Ssh ssh = new Ssh();
+            ArrayList<String> commands = new ArrayList<String>();
+            commands.add("cd " + Prop.getSvnPath());
+            commands.add("rm -rf " + repo.getNom());
+
+            for (String command : commands) {
+                System.out.println(command);
+            }
+            ssh.sshCommand(commands);
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
     }
