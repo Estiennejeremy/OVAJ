@@ -36,12 +36,19 @@ public abstract class BddDAO {
         transaction.commit();
     }
 
-    public static void refresh(Bdd bdd) {
+    public void deleteBdd(Bdd bdd) {
+        Transaction transaction = null;
+        Session session = getSession();
+        transaction = session.beginTransaction();
+        session.delete(bdd);
+        transaction.commit();
+    }
+
+    public void refresh(Bdd bdd) {
         Transaction transaction = null;
         transaction = HibernateUtils.getSessionFactory().getCurrentSession().beginTransaction();
         HibernateUtils.getSessionFactory().getCurrentSession().merge(bdd);
         transaction.commit();
-
     }
 
     public static Bdd getOneBdd(Bdd bdd) {
