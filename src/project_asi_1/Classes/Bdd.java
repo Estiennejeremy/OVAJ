@@ -73,5 +73,4 @@ public class Bdd implements Serializable {
     public String toString() {
         return nom;
     }
-
 }
