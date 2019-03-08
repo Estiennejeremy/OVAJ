@@ -221,13 +221,6 @@ public class BD extends javax.swing.JPanel {
         Frame.getFrames()[0].remove(this);
         Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_suppr());
         Frame.getFrames()[0].setVisible(true);
-
-        //        Bdd b = listBD_bd.getModel().getSelectedItem();
-        BddDAO bdDao = new BddDAO();
-        Bdd cacahuete;
-        cacahuete = bdDao.getOneBdd((Bdd) listBD_bd.getSelectedValuesList());
-
-        bdDao.deleteBdd(cacahuete);
     }//GEN-LAST:event_btnBD_supprimerActionPerformed
 
     private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit2ActionPerformed

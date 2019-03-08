@@ -69,8 +69,8 @@ public class Bdd implements Serializable {
         this.groupe = groupe;
     }
 
-//    @Override
-//    public String toString() {
-//        return nom;
-//    }
+    @Override
+    public String toString() {
+        return nom;
+    }
 }
