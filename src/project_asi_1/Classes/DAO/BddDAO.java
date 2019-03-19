@@ -16,7 +16,7 @@ import project_asi_1.Classes.utils.HibernateUtils;
  *
  * @author ESTIENNE
  */
-public abstract class BddDAO {
+public class BddDAO {
 
     private static Session getSession() {
         Session session = null;
@@ -28,7 +28,7 @@ public abstract class BddDAO {
         return session;
     }
 
-    public static void saveBdd(Bdd bdd) {
+    public void saveBdd(Bdd bdd) {
         Transaction transaction = null;
         Session session = getSession();
         transaction = session.beginTransaction();
@@ -36,7 +36,7 @@ public abstract class BddDAO {
         transaction.commit();
     }
 
-    public static void deleteBdd(Bdd bdd) {
+    public void deleteBdd(Bdd bdd) {
         Transaction transaction = null;
         Session session = getSession();
         transaction = session.beginTransaction();
@@ -44,19 +44,19 @@ public abstract class BddDAO {
         transaction.commit();
     }
 
-    public static void refresh(Bdd bdd) {
+    public void refresh(Bdd bdd) {
         Transaction transaction = null;
         transaction = HibernateUtils.getSessionFactory().getCurrentSession().beginTransaction();
         HibernateUtils.getSessionFactory().getCurrentSession().merge(bdd);
         transaction.commit();
     }
 
-    public static Bdd getOneBdd(Bdd bdd) {
+    public Bdd getOneBdd(Bdd bdd) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return (Bdd) session.get(Bdd.class, bdd.getId());
     }
 
-    public static List<Bdd> getBdd() {
+    public List<Bdd> getBdd() {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return (List<Bdd>) session.createQuery("from " + Bdd.class.getName()).list();
     }

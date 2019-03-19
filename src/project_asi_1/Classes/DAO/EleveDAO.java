@@ -9,7 +9,6 @@ package project_asi_1.Classes.DAO;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import project_asi_1.Classes.Bdd;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.utils.HibernateUtils;
 
@@ -17,9 +16,9 @@ import project_asi_1.Classes.utils.HibernateUtils;
  *
  * @author ESTIENNE
  */
-public abstract class EleveDAO {
+public class EleveDAO {
 
-    private static Session getSession() {
+    private Session getSession() {
         Session session = null;
         if (HibernateUtils.getSessionFactory().getCurrentSession().isOpen()) {
             session = HibernateUtils.getSessionFactory().getCurrentSession();
@@ -29,7 +28,7 @@ public abstract class EleveDAO {
         return session;
     }
 
-    public static void saveEleve(Eleve eleve) {
+    public void saveEleve(Eleve eleve) {
         Transaction transaction = null;
         Session session = getSession();
         transaction = session.beginTransaction();
@@ -37,7 +36,7 @@ public abstract class EleveDAO {
         transaction.commit();
     }
 
-    public static List<Eleve> getEleves() {
+    public List<Eleve> getEleves() {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return (List<Eleve>) session.createQuery("from " + Eleve.class.getName()).list();
     }
@@ -55,23 +54,4 @@ public abstract class EleveDAO {
         return (Eleve) session.get(Eleve.class, eleve.getId());
     }
 
-    public void createMysqlUser(Eleve e) { // creer un utiliseur mysql
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        String SQLRequest = "CREATE USER '" + e.getAbreviation() + "'@'%' IDENTIFIED BY '" + e.getPwd() + "'; ";
-        session.beginTransaction();
-        session.createSQLQuery(SQLRequest).executeUpdate();
-        session.getTransaction().commit();
-        session.close();
-
-    }
-
-    public void addEleveOnSchema(Eleve e, Bdd d) { // ajoute un eleve sur un schema
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        String SQLRequest = "GRANT ALL PRIVILEGES ON database " + d.getNom() + ".* TO '" + e.getAbreviation() + "'@'%';";
-        session.beginTransaction();
-        session.createSQLQuery(SQLRequest).executeUpdate();
-        session.getTransaction().commit();
-        session.close();
-
-    }
 }

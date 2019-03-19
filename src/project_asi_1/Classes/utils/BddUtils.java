@@ -31,15 +31,25 @@ public abstract class BddUtils {
         String SQLRequest = "";
         String nomBd = bd.getNom() + timeStamp;
         SQLRequest = "CREATE SCHEMA " + nomBd + ";";
-        for (Eleve e : g.getEleves()) {
-            SQLRequest = SQLRequest + " GRANT ALL PRIVILEGES ON database " + nomBd + ".* TO '" + e.getAbreviation() + "'@'%';";
-        }
+
         session.beginTransaction();
         session.createSQLQuery(SQLRequest).executeUpdate();
         session.getTransaction().commit();
         session.close();
         bd.setNomComplet(nomBd);
-        BddDAO.saveBdd(bd);
+        BddDAO bddDao = new BddDAO();
+
+        bddDao.saveBdd(bd);
+        String SQLRequest2 = "";
+        for (Eleve e : g.getEleves()) {
+            SQLRequest2 = "";
+            SQLRequest2 = "GRANT ALL PRIVILEGES ON " + nomBd + ".* TO '" + e.getAbreviation() + "'@'%' ; ";
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.createSQLQuery(SQLRequest2).executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+        }
 
     }
 
@@ -52,7 +62,8 @@ public abstract class BddUtils {
         session.getTransaction().commit();
         session.close();
         bd.setNom(newName);
-        BddDAO.refresh(bd);
+        BddDAO bddDao = new BddDAO();
+        bddDao.refresh(bd);
 
     }
 
@@ -65,7 +76,29 @@ public abstract class BddUtils {
         session.getTransaction().commit();
         session.close();
         bd = null;
-        BddDAO.deleteBdd(bd);
+        BddDAO bddDao = new BddDAO();
+        bddDao.deleteBdd(bd);
+
+    }
+
+    public static void createMysqlUser(Eleve e) { // creer un utiliseur mysql
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        String SQLRequest = "CREATE USER '" + e.getAbreviation() + "'@'%' IDENTIFIED BY '" + e.getPwd() + "'; ";
+        System.out.println(SQLRequest);
+        session.beginTransaction();
+        session.createSQLQuery(SQLRequest).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
+    public static void addEleveOnSchema(Eleve e, Bdd d) { // ajoute un eleve sur un schema
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        String SQLRequest = "GRANT ALL PRIVILEGES ON database " + d.getNom() + ".* TO '" + e.getAbreviation() + "'@'%' IDENTIFIED BY " + e.getPwd() + " ;";
+        session.beginTransaction();
+        session.createSQLQuery(SQLRequest).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
 
     }
 

@@ -29,7 +29,8 @@ public class BDD extends javax.swing.JPanel {
     }
 
     private void remplirListBD() {
-        List<Bdd> b = BddDAO.getBdd();
+        BddDAO bddDao = new BddDAO();
+        List<Bdd> b = bddDao.getBdd();
         DefaultListModel dlm = new DefaultListModel();
         listBD_bd.setModel(dlm);
         for (Bdd bdd : b) {
@@ -38,7 +39,8 @@ public class BDD extends javax.swing.JPanel {
     }
 
     private void remplirListGroupe() {
-        List<Groupe> gr = GroupeDAO.getGroupes();
+        GroupeDAO groupeDao = new GroupeDAO();
+        List<Groupe> gr = groupeDao.getGroupes();
         DefaultListModel dlmGr = new DefaultListModel();
         listBD_eleve.setModel(dlmGr);
         for (Groupe groupe : gr) {
@@ -216,12 +218,7 @@ public class BDD extends javax.swing.JPanel {
 
     private void btnBD_supprimerActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_suppr());
-        Frame.getFrames()[0].setVisible(true);
 
-        BddDAO.deleteBdd(listBD_bd.getSelectedValuesList().get(0));
-        System.out.println(listBD_bd.getSelectedValuesList().get(0));
     }
 
     private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {

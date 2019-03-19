@@ -32,7 +32,8 @@ public class BD_creer extends javax.swing.JPanel {
     }
 
     private void remplirComboGroupe() {
-        List<Groupe> gr = GroupeDAO.getGroupes();
+        GroupeDAO groupeDao = new GroupeDAO();
+        List<Groupe> gr = groupeDao.getGroupes();
         DefaultComboBoxModel dcm = new DefaultComboBoxModel();
         comboboxBD_user.setModel(dcm);
         for (Groupe groupe : gr) {
@@ -185,14 +186,17 @@ public class BD_creer extends javax.swing.JPanel {
         Frame.getFrames()[0].setVisible(true);
         Groupe p = (Groupe) comboboxBD_user.getModel().getSelectedItem();
         Bdd bdd;
+
         try {
             bdd = new Bdd(textBD_nom.getText(), (Groupe) comboboxBD_user.getModel().getSelectedItem());
-            BddDAO.saveBdd(bdd);
+            BddDAO bddDao = new BddDAO();
+            bddDao.saveBdd(bdd);
         } catch (IOException ex) {
             Logger.getLogger(BD_creer.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(BD_creer.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_btnBD_validerActionPerformed
 
     private void textBD_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBD_nomActionPerformed

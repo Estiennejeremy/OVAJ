@@ -6,6 +6,10 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import project_asi_1.Classes.DAO.GroupeDAO;
+import project_asi_1.Classes.Groupe;
 
 /**
  *
@@ -18,6 +22,16 @@ public class Repo extends javax.swing.JPanel {
      */
     public Repo() {
         initComponents();
+    }
+
+    public void replirListGroupe() {
+        GroupeDAO groupeDao = new GroupeDAO();
+        List<Groupe> groupes = groupeDao.getGroupes();
+        DefaultListModel dlm = new DefaultListModel();
+        listREPO_eleve.setModel(dlm);
+        for (Groupe g : groupes) {
+            dlm.addElement(g);
+        }
     }
 
     /**

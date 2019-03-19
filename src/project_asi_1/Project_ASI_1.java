@@ -11,6 +11,7 @@ import project_asi_1.Classes.DAO.RepoDAO;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.Repo;
+import project_asi_1.Classes.utils.RepoUtils;
 
 /**
  *
@@ -37,26 +38,26 @@ public class Project_ASI_1 {
         Groupe g = new Groupe("ASI1");
         Groupe g1 = new Groupe("ASI2");
 
-        Bdd bd = new Bdd("bddASI1", g);
-        Bdd bd1 = new Bdd("bddASI2", g1);
-        Repo r = new Repo();
+        Repo r = new Repo("Test", g);
 
-//        RepoUtils.AddEleveOnSvn(e1);
-//
-//        RepoUtils.createRepo(g, r);
-//        RepoUtils.addEleveOnRepo(e1, g);
+        RepoUtils.AddEleveOnSvn(e1);
+
+        RepoUtils.addEleveOnRepo(e1, r);
         g.addEleve(e);
         g.addEleve(e1);
-
-        EleveDAO.saveEleve(e);
-        EleveDAO.saveEleve(e1);
-        GroupeDAO.saveGroupe(g);
-        GroupeDAO.saveGroupe(g1);
-        RepoDAO.saveRepo(r);
-        BddDAO.saveBdd(bd);
-        BddDAO.saveBdd(bd1);
-
-        System.out.println(EleveDAO.getEleves());
+        EleveDAO eleveDao = new EleveDAO();
+        GroupeDAO groupeDao = new GroupeDAO();
+        RepoDAO repoDao = new RepoDAO();
+        BddDAO bddDao = new BddDAO();
+        eleveDao.saveEleve(e);
+        eleveDao.saveEleve(e1);
+        groupeDao.saveGroupe(g);
+        groupeDao.saveGroupe(g1);
+        repoDao.saveRepo(r);
+        Bdd bd = new Bdd("bddASI1", g);
+        Bdd bd1 = new Bdd("bddASI2", g1);
+        bddDao.saveBdd(bd);
+        bddDao.saveBdd(bd1);
 
         System.exit(0);
     }

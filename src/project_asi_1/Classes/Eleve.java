@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import project_asi_1.Classes.DAO.EleveDAO;
 
 /**
  *
@@ -75,6 +76,8 @@ public class Eleve {
         this.pwd = generatedString;
         this.abreviation = prenom.charAt(0) + nom;
         this.groupes = new ArrayList<Groupe>();
+        EleveDAO eleveDao = new EleveDAO();
+        // BddUtils.createMysqlUser(this);
 
     }
 

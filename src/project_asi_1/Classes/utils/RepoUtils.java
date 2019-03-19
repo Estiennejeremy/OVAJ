@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import project_asi_1.Classes.DAO.RepoDAO;
 import project_asi_1.Classes.Eleve;
-import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.Repo;
 import project_asi_1.Classes.Ssh;
 
@@ -20,13 +19,13 @@ import project_asi_1.Classes.Ssh;
  */
 public abstract class RepoUtils {
 
-    public static void addEleveOnRepo(Eleve el, Groupe g) throws IOException, SQLException { //ajouter des eleve sur un repository
+    public static void addEleveOnRepo(Eleve el, Repo rep) throws IOException, SQLException { //ajouter des eleve sur un repository
         try {
             Ssh ssh = new Ssh();
             ArrayList<String> commands = new ArrayList<String>();
             commands.add("cd " + Prop.getSvnPath());
 
-            commands.add("cd " + g.getNom() + "/conf");
+            commands.add("cd " + rep.getNom() + "/conf");
 
             commands.add("echo '" + el.getAbreviation() + " = " + el.getPwd() + "' >> passwd");
 
@@ -98,7 +97,8 @@ public abstract class RepoUtils {
         } catch (Exception e) {
             System.out.println(e);
         }
-        RepoDAO.deleteRepo(repo);
+        RepoDAO repDao = new RepoDAO();
+        repDao.deleteRepo(repo);
 
     }
 
