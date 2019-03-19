@@ -78,7 +78,6 @@ public class Ssh {
                 }
                 System.out.println("commands exect " + command);
             }
-            test = test + " && cd ";
             System.out.println(test);
             session.execCommand(test);
             InputStream stdout = new StreamGobbler(session.getStdout());

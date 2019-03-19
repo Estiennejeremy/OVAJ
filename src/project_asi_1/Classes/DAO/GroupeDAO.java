@@ -15,9 +15,9 @@ import project_asi_1.Classes.utils.HibernateUtils;
  *
  * @author ESTIENNE
  */
-public class GroupeDAO {
+public abstract class GroupeDAO {
 
-    private Session getSession() {
+    private static Session getSession() {
         Session session = null;
         if (HibernateUtils.getSessionFactory().getCurrentSession().isOpen()) {
             session = HibernateUtils.getSessionFactory().getCurrentSession();
@@ -27,7 +27,7 @@ public class GroupeDAO {
         return session;
     }
 
-    public void saveGroupe(Groupe groupe) {
+    public static void saveGroupe(Groupe groupe) {
         Transaction transaction = null;
         Session session = getSession();
         transaction = session.beginTransaction();
@@ -35,19 +35,19 @@ public class GroupeDAO {
         transaction.commit();
     }
 
-    public void refresh(Groupe groupe) {
+    public static void refresh(Groupe groupe) {
         Transaction transaction = null;
         transaction = HibernateUtils.getSessionFactory().getCurrentSession().beginTransaction();
         HibernateUtils.getSessionFactory().getCurrentSession().merge(groupe);
         transaction.commit();
     }
 
-    public Groupe getOneGroupe(Groupe groupe) {
+    public static Groupe getOneGroupe(Groupe groupe) {
         Session session = getSession();
         return (Groupe) session.get(Groupe.class, groupe.getId());
     }
 
-    public List<Groupe> getGroupes() {
+    public static List<Groupe> getGroupes() {
         Session session = getSession();
         return (List<Groupe>) session.createQuery("from " + Groupe.class.getName()).list();
     }
