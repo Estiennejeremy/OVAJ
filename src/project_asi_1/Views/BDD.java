@@ -220,8 +220,7 @@ public class BDD extends javax.swing.JPanel {
         Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_suppr());
         Frame.getFrames()[0].setVisible(true);
 
-        BddDAO bdDao = new BddDAO();
-        bdDao.deleteBdd(listBD_bd.getSelectedValuesList().get(0));
+        BddDAO.deleteBdd(listBD_bd.getSelectedValuesList().get(0));
         System.out.println(listBD_bd.getSelectedValuesList().get(0));
     }
 
