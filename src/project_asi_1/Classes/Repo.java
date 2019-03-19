@@ -5,6 +5,8 @@
  */
 package project_asi_1.Classes;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import project_asi_1.Classes.utils.RepoUtils;
 
 /**
  *
@@ -29,6 +32,7 @@ public class Repo {
     private String nom;
     @Column(name = "path")
     private String path;
+
     @ManyToOne
     private Groupe groupe;
 
@@ -40,6 +44,12 @@ public class Repo {
         this.nom = nom;
         this.path = path;
         this.groupe = groupe;
+    }
+
+    public Repo(String nom, Groupe g) throws IOException, SQLException {
+        this.nom = nom;
+        this.groupe = g;
+        RepoUtils.createRepo(nom, this);
     }
 
     public int getId() {

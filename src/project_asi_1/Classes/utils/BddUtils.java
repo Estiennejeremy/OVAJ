@@ -24,12 +24,12 @@ public abstract class BddUtils {
     /**
      * Créer une base de donnée sur le serveur
      */
-    public static void generateBd(Groupe g) throws IOException, SQLException { // cree un schema
+    public static void generateBd(Groupe g, Bdd bd) throws IOException, SQLException { // cree un schema
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
         Session session = HibernateUtils.getSessionFactory().openSession();
         String SQLRequest = "";
-        String nomBd = g.getNom() + timeStamp;
+        String nomBd = bd.getNom() + timeStamp;
         SQLRequest = "CREATE SCHEMA " + nomBd + ";";
         for (Eleve e : g.getEleves()) {
             SQLRequest = SQLRequest + " GRANT ALL PRIVILEGES ON database " + nomBd + ".* TO '" + e.getAbreviation() + "'@'%';";
@@ -38,8 +38,8 @@ public abstract class BddUtils {
         session.createSQLQuery(SQLRequest).executeUpdate();
         session.getTransaction().commit();
         session.close();
-        Bdd d = new Bdd(nomBd, g);
-        BddDAO.saveBdd(d);
+        bd.setNomComplet(nomBd);
+        BddDAO.saveBdd(bd);
 
     }
 
@@ -65,6 +65,7 @@ public abstract class BddUtils {
         session.getTransaction().commit();
         session.close();
         bd = null;
+        BddDAO.deleteBdd(bd);
 
     }
 

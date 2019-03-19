@@ -5,7 +5,9 @@
  */
 package project_asi_1.Classes;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.sql.SQLException;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import project_asi_1.Classes.utils.BddUtils;
 
 /**
  *
@@ -28,21 +31,33 @@ public class Bdd implements Serializable {
     private int id;
     @Column(name = "nom")
     private String nom;
+    @Column(name = "nom_complet")
+    private String nomComplet;
     @ManyToOne
     private Groupe groupe;
 
     public Bdd() {
     }
 
-    public Bdd(int id, String nom, Groupe groupe) {
+    public Bdd(int id, String nom, String nomComplet, Groupe groupe) {
         this.id = id;
         this.nom = nom;
         this.groupe = groupe;
+        this.nomComplet = nomComplet;
     }
 
-    public Bdd(String nom, Groupe groupe) {
+    public String getNomComplet() {
+        return nomComplet;
+    }
+
+    public void setNomComplet(String nomComplet) {
+        this.nomComplet = nomComplet;
+    }
+
+    public Bdd(String nom, Groupe groupe) throws IOException, SQLException {
         this.nom = nom;
         this.groupe = groupe;
+        BddUtils.generateBd(groupe, this);
     }
 
     public int getId() {

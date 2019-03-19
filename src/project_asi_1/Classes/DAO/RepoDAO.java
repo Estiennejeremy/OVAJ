@@ -35,6 +35,14 @@ public abstract class RepoDAO {
         transaction.commit();
     }
 
+    public static void deleteRepo(Repo repo) {
+        Transaction transaction = null;
+        Session session = getSession();
+        transaction = session.beginTransaction();
+        session.delete(repo);
+        transaction.commit();
+    }
+
     public static List<Repo> getRepos() {
         Session session = getSession();
         return (List<Repo>) session.createQuery("from " + Repo.class.getName()).list();

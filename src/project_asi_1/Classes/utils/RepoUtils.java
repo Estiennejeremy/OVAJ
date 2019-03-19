@@ -8,6 +8,7 @@ package project_asi_1.Classes.utils;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import project_asi_1.Classes.DAO.RepoDAO;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.Repo;
@@ -57,15 +58,15 @@ public abstract class RepoUtils {
 
     }
 
-    public static void createRepo(Groupe g, Repo repo) throws IOException, SQLException { //cree un repository
+    public static void createRepo(String nomRepo, Repo repo) throws IOException, SQLException { //cree un repository
         try {
 
             Ssh ssh = new Ssh();
             ArrayList<String> commands = new ArrayList<String>();
             commands.add("cd " + Prop.getSvnPath());
-            commands.add("svnadmin create --fs-type fsfs " + g.getNom());
-            commands.add("cd " + g.getNom() + "/conf");
-            for (Eleve eleve : g.getEleves()) {
+            commands.add("svnadmin create --fs-type fsfs " + nomRepo);
+            commands.add("cd " + nomRepo + "/conf");
+            for (Eleve eleve : repo.getGroupe().getEleves()) {
                 commands.add("echo '" + eleve.getAbreviation() + " = " + eleve.getPwd() + "' >> passwd");
             }
             for (String command : commands) {
@@ -73,9 +74,7 @@ public abstract class RepoUtils {
             }
             ssh.sshCommand(commands);
 
-            repo.setPath("svn://" + Prop.getHoteSsh() + "/" + Prop.getSvnPath() + "/" + g.getNom());
-            repo.setGroupe(g);
-            repo.setNom(g.getNom());
+            repo.setPath("svn://" + Prop.getHoteSsh() + "/" + Prop.getSvnPath() + "/" + nomRepo);
 
         } catch (Exception e) {
             System.out.println(e);
@@ -99,6 +98,7 @@ public abstract class RepoUtils {
         } catch (Exception e) {
             System.out.println(e);
         }
+        RepoDAO.deleteRepo(repo);
 
     }
 

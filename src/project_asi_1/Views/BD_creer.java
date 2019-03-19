@@ -6,7 +6,11 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import project_asi_1.Classes.Bdd;
 import project_asi_1.Classes.DAO.BddDAO;
@@ -180,9 +184,15 @@ public class BD_creer extends javax.swing.JPanel {
         Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_creer());
         Frame.getFrames()[0].setVisible(true);
         Groupe p = (Groupe) comboboxBD_user.getModel().getSelectedItem();
-        Bdd bdd = new Bdd(textBD_nom.getText(), (Groupe) comboboxBD_user.getModel().getSelectedItem());
-
-        BddDAO.saveBdd(bdd);
+        Bdd bdd;
+        try {
+            bdd = new Bdd(textBD_nom.getText(), (Groupe) comboboxBD_user.getModel().getSelectedItem());
+            BddDAO.saveBdd(bdd);
+        } catch (IOException ex) {
+            Logger.getLogger(BD_creer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BD_creer.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnBD_validerActionPerformed
 
     private void textBD_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBD_nomActionPerformed
