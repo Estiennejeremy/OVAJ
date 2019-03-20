@@ -18,7 +18,7 @@ import project_asi_1.Classes.utils.HibernateUtils;
  */
 public class BddDAO {
 
-    private static Session getSession() {
+    private Session getSession() {
         Session session = null;
         if (HibernateUtils.getSessionFactory().getCurrentSession().isOpen()) {
             session = HibernateUtils.getSessionFactory().getCurrentSession();
@@ -60,5 +60,4 @@ public class BddDAO {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return (List<Bdd>) session.createQuery("from " + Bdd.class.getName()).list();
     }
-
 }

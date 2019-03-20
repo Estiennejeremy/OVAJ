@@ -110,7 +110,7 @@ public class BD_popup_suppr extends javax.swing.JPanel {
     private void btnBD_ouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_ouiActionPerformed
         // TODO add your handling code here:
         Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BD());
+        Frame.getFrames()[0].add(new project_asi_1.Views.BaseDD());
         Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnBD_ouiActionPerformed
 
@@ -122,7 +122,7 @@ public class BD_popup_suppr extends javax.swing.JPanel {
     private void btnBD_nonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_nonActionPerformed
         // TODO add your handling code here:
         Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BD());
+        Frame.getFrames()[0].add(new project_asi_1.Views.BaseDD());
         Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnBD_nonActionPerformed
 
