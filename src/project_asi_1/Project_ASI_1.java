@@ -59,6 +59,6 @@ public class Project_ASI_1 {
         bddDao.saveBdd(bd);
         bddDao.saveBdd(bd1);
 
-        System.exit(0);
+        // System.exit(0);
     }
 }

@@ -64,6 +64,8 @@ public abstract class RepoUtils {
             ArrayList<String> commands = new ArrayList<String>();
             commands.add("cd " + Prop.getSvnPath());
             commands.add("svnadmin create --fs-type fsfs " + nomRepo);
+            commands.add("rm /var/svn/" + nomRepo + "/conf/svnserve.conf");
+            commands.add("cp /var/svn/svnserve.conf /var/svn/" + nomRepo + "/conf");
             commands.add("cd " + nomRepo + "/conf");
             for (Eleve eleve : repo.getGroupe().getEleves()) {
                 commands.add("echo '" + eleve.getAbreviation() + " = " + eleve.getPwd() + "' >> passwd");
