@@ -49,6 +49,11 @@ public class GroupeDAO {
 
     public List<Groupe> getGroupes() {
         Session session = getSession();
-        return (List<Groupe>) session.createQuery("from " + Groupe.class.getName()).list();
+        session.beginTransaction();
+        List<Groupe> groupes = (List<Groupe>) session.createQuery("from " + Groupe.class.getName()).list();
+        session.getTransaction().commit();
+
+        return groupes;
+
     }
 }
