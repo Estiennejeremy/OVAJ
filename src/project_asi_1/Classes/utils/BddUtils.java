@@ -92,6 +92,17 @@ public abstract class BddUtils {
 
     }
 
+    public static void dropMysqlUser(Eleve e) { // creer un utiliseur mysql
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        String SQLRequest = "DROP USER '" + e.getAbreviation() + "'@'%' ; ";
+        System.out.println(SQLRequest);
+        session.beginTransaction();
+        session.createSQLQuery(SQLRequest).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
     public static void addEleveOnSchema(Eleve e, Bdd d) { // ajoute un eleve sur un schema
         Session session = HibernateUtils.getSessionFactory().openSession();
         String SQLRequest = "GRANT ALL PRIVILEGES ON database " + d.getNom() + ".* TO '" + e.getAbreviation() + "'@'%' IDENTIFIED BY " + e.getPwd() + " ;";
