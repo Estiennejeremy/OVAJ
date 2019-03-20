@@ -134,7 +134,7 @@ public class BD_popup_creer extends javax.swing.JPanel {
     private void btnBD_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_retourActionPerformed
         // TODO add your handling code here:
         Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BD());
+        Frame.getFrames()[0].add(new project_asi_1.Views.BaseDD());
         Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnBD_retourActionPerformed
 

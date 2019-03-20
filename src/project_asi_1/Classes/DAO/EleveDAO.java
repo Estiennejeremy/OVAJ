@@ -17,9 +17,9 @@ import project_asi_1.Classes.utils.HibernateUtils;
  *
  * @author ESTIENNE
  */
-public abstract class EleveDAO {
+public class EleveDAO {
 
-    private static Session getSession() {
+    private Session getSession() {
         Session session = null;
         if (HibernateUtils.getSessionFactory().getCurrentSession().isOpen()) {
             session = HibernateUtils.getSessionFactory().getCurrentSession();
@@ -29,7 +29,7 @@ public abstract class EleveDAO {
         return session;
     }
 
-    public static void saveEleve(Eleve eleve) {
+    public void saveEleve(Eleve eleve) {
         Transaction transaction = null;
         Session session = getSession();
         transaction = session.beginTransaction();
@@ -37,7 +37,7 @@ public abstract class EleveDAO {
         transaction.commit();
     }
 
-    public static List<Eleve> getEleves() {
+    public List<Eleve> getEleves() {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return (List<Eleve>) session.createQuery("from " + Eleve.class.getName()).list();
     }

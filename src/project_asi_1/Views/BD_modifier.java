@@ -116,17 +116,17 @@ public class BD_modifier extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(textBD_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 4, Short.MAX_VALUE))
+                                .addGap(0, 2, Short.MAX_VALUE))
                             .addComponent(comboxBD_user, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBD_retour)))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 540, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 540, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +164,7 @@ public class BD_modifier extends javax.swing.JPanel {
     private void btnBD_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_validerActionPerformed
         // TODO add your handling code here:
         Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BD());
+        Frame.getFrames()[0].add(new project_asi_1.Views.BaseDD());
         Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnBD_validerActionPerformed
 
@@ -175,7 +175,7 @@ public class BD_modifier extends javax.swing.JPanel {
     private void btnBD_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_retourActionPerformed
         // TODO add your handling code here:
         Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BD());
+        Frame.getFrames()[0].add(new project_asi_1.Views.BaseDD());
         Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnBD_retourActionPerformed
 

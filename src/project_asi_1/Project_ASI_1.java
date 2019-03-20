@@ -40,6 +40,10 @@ public class Project_ASI_1 {
         Bdd bd = new Bdd("bddASI1", g);
         Bdd bd1 = new Bdd("bddASI2", g1);
         Repo r = new Repo();
+        GroupeDAO GroupeDAO = new GroupeDAO();
+        EleveDAO EleveDAO = new EleveDAO();
+        RepoDAO RepoDAO = new RepoDAO();
+        BddDAO BddDAO = new BddDAO();
 
 //        RepoUtils.AddEleveOnSvn(e1);
 //
@@ -57,7 +61,5 @@ public class Project_ASI_1 {
         BddDAO.saveBdd(bd1);
 
         System.out.println(EleveDAO.getEleves());
-
-        System.exit(0);
     }
 }

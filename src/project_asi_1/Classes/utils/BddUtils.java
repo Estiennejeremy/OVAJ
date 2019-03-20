@@ -39,6 +39,7 @@ public abstract class BddUtils {
         session.getTransaction().commit();
         session.close();
         Bdd d = new Bdd(nomBd, g);
+        BddDAO BddDAO = new BddDAO();
         BddDAO.saveBdd(d);
 
     }
@@ -52,6 +53,7 @@ public abstract class BddUtils {
         session.getTransaction().commit();
         session.close();
         bd.setNom(newName);
+        BddDAO BddDAO = new BddDAO();
         BddDAO.refresh(bd);
 
     }

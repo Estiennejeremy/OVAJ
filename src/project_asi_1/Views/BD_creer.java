@@ -28,6 +28,7 @@ public class BD_creer extends javax.swing.JPanel {
     }
 
     private void remplirComboGroupe() {
+        GroupeDAO GroupeDAO = new GroupeDAO();
         List<Groupe> gr = GroupeDAO.getGroupes();
         DefaultComboBoxModel dcm = new DefaultComboBoxModel();
         comboboxBD_user.setModel(dcm);
@@ -181,8 +182,8 @@ public class BD_creer extends javax.swing.JPanel {
         Frame.getFrames()[0].setVisible(true);
         Groupe p = (Groupe) comboboxBD_user.getModel().getSelectedItem();
         Bdd bdd = new Bdd(textBD_nom.getText(), (Groupe) comboboxBD_user.getModel().getSelectedItem());
-
-        BddDAO.saveBdd(bdd);
+        BddDAO bdDao = new BddDAO();
+        bdDao.saveBdd(bdd);
     }//GEN-LAST:event_btnBD_validerActionPerformed
 
     private void textBD_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBD_nomActionPerformed
@@ -192,7 +193,7 @@ public class BD_creer extends javax.swing.JPanel {
     private void btnBD_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_retourActionPerformed
         // TODO add your handling code here:
         Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BDD());
+        Frame.getFrames()[0].add(new project_asi_1.Views.BaseDD());
         Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnBD_retourActionPerformed
 
