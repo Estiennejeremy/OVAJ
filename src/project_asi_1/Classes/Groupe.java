@@ -52,7 +52,7 @@ public class Groupe {
     private List<Bdd> bdd;
 
     @OneToMany(mappedBy = "groupe")
-    private List<Repo> repo;
+    private List<Repository> repo;
 
     @Column(name = "creation_date")
     private Date dateCreation = new Date();
@@ -74,6 +74,14 @@ public class Groupe {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Repository> getRepo() {
+        return repo;
+    }
+
+    public void setRepo(List<Repository> repo) {
+        this.repo = repo;
     }
 
     public Groupe(String nom) throws IOException, SQLException {
@@ -105,6 +113,10 @@ public class Groupe {
 
     public void addEleve(Eleve e) {
         this.eleves.add(e);
+    }
+
+    public void addRepo(Repository r) {
+        this.repo.add(r);
     }
 
     public List<Bdd> getBdd() {

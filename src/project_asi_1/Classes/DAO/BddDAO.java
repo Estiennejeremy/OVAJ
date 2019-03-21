@@ -10,6 +10,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import project_asi_1.Classes.Bdd;
+import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.utils.HibernateUtils;
 
 /**
@@ -54,6 +55,15 @@ public class BddDAO {
     public Bdd getOneBdd(Bdd bdd) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return (Bdd) session.get(Bdd.class, bdd.getId());
+    }
+
+    public List<Bdd> getBddByGroupe(Groupe g) {
+        Session session = getSession();
+        session.beginTransaction();
+        List<Bdd> bdds = (List<Bdd>) session.createQuery("from " + Bdd.class.getName() + " where groupe_id_groupe = " + g.getId()).list();
+        session.getTransaction().commit();
+        return bdds;
+
     }
 
     public List<Bdd> getBdd() {

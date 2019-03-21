@@ -6,10 +6,13 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import project_asi_1.Classes.DAO.GroupeDAO;
+import project_asi_1.Classes.DAO.RepoDAO;
 import project_asi_1.Classes.Groupe;
+import project_asi_1.Classes.Repository;
 
 /**
  *
@@ -22,7 +25,10 @@ public class Repo extends javax.swing.JPanel {
      */
     public Repo() {
         initComponents();
+        replirListGroupe();
+
     }
+    public static List<Repository> repository = new ArrayList<Repository>();
 
     public void replirListGroupe() {
         GroupeDAO groupeDao = new GroupeDAO();
@@ -31,6 +37,21 @@ public class Repo extends javax.swing.JPanel {
         listREPO_eleve.setModel(dlm);
         for (Groupe g : groupes) {
             dlm.addElement(g);
+        }
+    }
+
+    public void remplirListRepo() {
+        repository = null;
+        RepoDAO repoDao = new RepoDAO();
+        Object o = listREPO_eleve.getModel().getElementAt(listREPO_eleve.getSelectedIndex());
+        if (o instanceof Groupe) {
+            Groupe g = (Groupe) o;
+            repository = repoDao.getRepoByGroupe(g);
+        }
+        DefaultListModel dlm2 = new DefaultListModel();
+        listREPO_repo.setModel(dlm2);
+        for (Repository repository : repository) {
+            dlm2.addElement(repository);
         }
     }
 
@@ -54,7 +75,6 @@ public class Repo extends javax.swing.JPanel {
         listREPO_repo = new javax.swing.JList<>();
         btnREPO_creer = new javax.swing.JButton();
         btnREPO_supprimer = new javax.swing.JButton();
-        btnREPO_modifier = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
         lblREPO_Repo.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
@@ -69,10 +89,10 @@ public class Repo extends javax.swing.JPanel {
         });
 
         listREPO_eleve.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        listREPO_eleve.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Eleve1", "Eleve2", "Eleve3", "Eleve4", "Eleve5", "Eleve6" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        listREPO_eleve.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listREPO_eleveValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(listREPO_eleve);
 
@@ -89,11 +109,6 @@ public class Repo extends javax.swing.JPanel {
         btnREPO_loupe.setText("<html>&#128269;</html>");
 
         listREPO_repo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        listREPO_repo.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "REPO1", "REPO2", "REPO3", "REPO4", "REPO5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(listREPO_repo);
 
         btnREPO_creer.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -109,14 +124,6 @@ public class Repo extends javax.swing.JPanel {
         btnREPO_supprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnREPO_supprimerActionPerformed(evt);
-            }
-        });
-
-        btnREPO_modifier.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        btnREPO_modifier.setText("Modifier");
-        btnREPO_modifier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnREPO_modifierActionPerformed(evt);
             }
         });
 
@@ -153,9 +160,7 @@ public class Repo extends javax.swing.JPanel {
                         .addComponent(btnREPO_retour)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnREPO_creer, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnREPO_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGap(190, 190, 190)
                             .addComponent(btnREPO_supprimer))))
                 .addGap(28, 28, 28))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +193,6 @@ public class Repo extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnREPO_creer)
-                            .addComponent(btnREPO_modifier)
                             .addComponent(btnREPO_supprimer))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                         .addComponent(btnREPO_retour)
@@ -213,10 +217,16 @@ public class Repo extends javax.swing.JPanel {
     }//GEN-LAST:event_txtREPO_searchActionPerformed
 
     private void btnREPO_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_supprimerActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.Repo_popup_suppr());
-        Frame.getFrames()[0].setVisible(true);
+        Object r = listREPO_repo.getModel().getElementAt(listREPO_repo.getSelectedIndex());
+        if (r instanceof Repository) {
+            Repository rep = (Repository) r;
+
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.Repo_popup_suppr(rep));
+            Frame.getFrames()[0].setVisible(true);
+
+        }
+
     }//GEN-LAST:event_btnREPO_supprimerActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -231,18 +241,14 @@ public class Repo extends javax.swing.JPanel {
         Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnREPO_creerActionPerformed
 
-    private void btnREPO_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_modifierActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.Repo_modifier());
-        Frame.getFrames()[0].setVisible(true);
-    }//GEN-LAST:event_btnREPO_modifierActionPerformed
+    private void listREPO_eleveValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listREPO_eleveValueChanged
+        remplirListRepo();
+    }//GEN-LAST:event_listREPO_eleveValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnREPO_creer;
     private javax.swing.JButton btnREPO_loupe;
-    private javax.swing.JButton btnREPO_modifier;
     private javax.swing.JButton btnREPO_retour;
     private javax.swing.JButton btnREPO_supprimer;
     private javax.swing.JLabel jLabel2;

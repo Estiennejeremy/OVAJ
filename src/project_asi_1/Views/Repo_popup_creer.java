@@ -6,6 +6,7 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import project_asi_1.Classes.Repository;
 
 /**
  *
@@ -16,8 +17,10 @@ public class Repo_popup_creer extends javax.swing.JPanel {
     /**
      * Creates new form BD
      */
-    public Repo_popup_creer() {
+    public Repo_popup_creer(Repository repos) {
         initComponents();
+        lblREPO_creation.setText("<html> <p>Le repository " + repos.getNom() + "<br>  a bien été créé pour le groupe " + repos.getGroupe() + "</p></html>");
+        txtareaREPO_log.setText(repos.getPath());
     }
 
     /**
@@ -125,7 +128,7 @@ public class Repo_popup_creer extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnREPO_copierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_copierActionPerformed
-        // TODO add your handling code here:
+        txtareaREPO_log.copy();
     }//GEN-LAST:event_btnREPO_copierActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

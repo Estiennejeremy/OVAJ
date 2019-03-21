@@ -40,9 +40,7 @@
                       <Component id="btnREPO_retour" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="btnREPO_creer" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="btnREPO_modifier" min="-2" pref="162" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                           <Component id="btnREPO_supprimer" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -87,7 +85,6 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnREPO_creer" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnREPO_modifier" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnREPO_supprimer" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="159" max="32767" attributes="0"/>
@@ -141,16 +138,12 @@
               <Font name="Tahoma" size="36" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="Eleve1"/>
-                <StringItem index="1" value="Eleve2"/>
-                <StringItem index="2" value="Eleve3"/>
-                <StringItem index="3" value="Eleve4"/>
-                <StringItem index="4" value="Eleve5"/>
-                <StringItem index="5" value="Eleve6"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listREPO_eleveValueChanged"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -192,13 +185,7 @@
               <Font name="Tahoma" size="36" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="REPO1"/>
-                <StringItem index="1" value="REPO2"/>
-                <StringItem index="2" value="REPO3"/>
-                <StringItem index="3" value="REPO4"/>
-                <StringItem index="4" value="REPO5"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -227,17 +214,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnREPO_supprimerActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnREPO_modifier">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="36" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Modifier"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnREPO_modifierActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnExit">

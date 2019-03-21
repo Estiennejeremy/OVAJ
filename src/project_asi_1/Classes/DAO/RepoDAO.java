@@ -8,7 +8,8 @@ package project_asi_1.Classes.DAO;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import project_asi_1.Classes.Repo;
+import project_asi_1.Classes.Groupe;
+import project_asi_1.Classes.Repository;
 import project_asi_1.Classes.utils.HibernateUtils;
 
 /**
@@ -27,7 +28,7 @@ public class RepoDAO {
         return session;
     }
 
-    public void saveRepo(Repo repo) {
+    public void saveRepo(Repository repo) {
         Transaction transaction = null;
         Session session = getSession();
         transaction = session.beginTransaction();
@@ -35,7 +36,7 @@ public class RepoDAO {
         transaction.commit();
     }
 
-    public void deleteRepo(Repo repo) {
+    public void deleteRepo(Repository repo) {
         Transaction transaction = null;
         Session session = getSession();
         transaction = session.beginTransaction();
@@ -43,12 +44,21 @@ public class RepoDAO {
         transaction.commit();
     }
 
-    public List<Repo> getRepos() {
+    public List<Repository> getRepos() {
         Session session = getSession();
-        return (List<Repo>) session.createQuery("from " + Repo.class.getName()).list();
+        return (List<Repository>) session.createQuery("from " + Repository.class.getName()).list();
     }
 
-    public void refresh(Repo repo) {
+    public List<Repository> getRepoByGroupe(Groupe g) {
+        Session session = getSession();
+        session.beginTransaction();
+        List<Repository> repos = (List<Repository>) session.createQuery("from " + Repository.class.getName() + " where groupe_id_groupe = " + g.getId()).list();
+        session.getTransaction().commit();
+        return repos;
+
+    }
+
+    public void refresh(Repository repo) {
         Transaction transaction = null;
         transaction = HibernateUtils.getSessionFactory().getCurrentSession().beginTransaction();
         HibernateUtils.getSessionFactory().getCurrentSession().merge(repo);
@@ -56,9 +66,9 @@ public class RepoDAO {
 
     }
 
-    public Repo getOneRepo(Repo repo) {
+    public Repository getOneRepo(Repository repo) {
         Session session = getSession();
-        return (Repo) session.get(Repo.class, repo.getId());
+        return (Repository) session.get(Repository.class, repo.getId());
     }
 
 }

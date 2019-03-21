@@ -22,7 +22,7 @@ import project_asi_1.Classes.utils.RepoUtils;
  */
 @Entity
 @Table(name = "repo", schema = "OVAJ")
-public class Repo {
+public class Repository {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,20 +36,22 @@ public class Repo {
     @ManyToOne
     private Groupe groupe;
 
-    public Repo() {
+    public Repository() {
     }
 
-    public Repo(int id, String nom, String path, Groupe groupe) {
+    public Repository(int id, String nom, String path, Groupe groupe) {
         this.id = id;
         this.nom = nom;
         this.path = path;
         this.groupe = groupe;
     }
 
-    public Repo(String nom, Groupe g) throws IOException, SQLException {
+    public Repository(String nom, Groupe g) throws IOException, SQLException {
         this.nom = nom;
         this.groupe = g;
+
         RepoUtils.createRepo(nom, this);
+
     }
 
     public int getId() {
@@ -82,6 +84,11 @@ public class Repo {
 
     public void setGroupe(Groupe groupe) {
         this.groupe = groupe;
+    }
+
+    @Override
+    public String toString() {
+        return nom; //To change body of generated methods, choose Tools | Templates.
     }
 
 }

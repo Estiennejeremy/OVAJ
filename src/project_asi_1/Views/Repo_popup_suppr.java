@@ -6,6 +6,12 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import project_asi_1.Classes.Repository;
+import project_asi_1.Classes.utils.RepoUtils;
 
 /**
  *
@@ -13,11 +19,13 @@ import java.awt.Frame;
  */
 public class Repo_popup_suppr extends javax.swing.JPanel {
 
-    /**
-     * Creates new form BD
-     */
-    public Repo_popup_suppr() {
+    public static Repository rep;
+
+    public Repo_popup_suppr(Repository repos) {
         initComponents();
+        rep = repos;
+        lblREPO_suppr.setText("<html> <p>Voulez-vous supprimer " + repos.getNom() + "<br>  des repositories ? </p></html>");
+
     }
 
     /**
@@ -108,7 +116,14 @@ public class Repo_popup_suppr extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnREPO_ouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_ouiActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            RepoUtils.DeleteRepo(rep);
+        } catch (IOException ex) {
+            Logger.getLogger(Repo_popup_suppr.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Repo_popup_suppr.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Frame.getFrames()[0].remove(this);
         Frame.getFrames()[0].add(new project_asi_1.Views.Repo());
         Frame.getFrames()[0].setVisible(true);

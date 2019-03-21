@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import project_asi_1.Classes.DAO.RepoDAO;
 import project_asi_1.Classes.Eleve;
-import project_asi_1.Classes.Repo;
+import project_asi_1.Classes.Repository;
 import project_asi_1.Classes.Ssh;
 
 /**
@@ -19,7 +19,7 @@ import project_asi_1.Classes.Ssh;
  */
 public abstract class RepoUtils {
 
-    public static void addEleveOnRepo(Eleve el, Repo rep) throws IOException, SQLException { //ajouter des eleve sur un repository
+    public static void addEleveOnRepo(Eleve el, Repository rep) throws IOException, SQLException { //ajouter des eleve sur un repository
         try {
             Ssh ssh = new Ssh();
             ArrayList<String> commands = new ArrayList<String>();
@@ -57,7 +57,7 @@ public abstract class RepoUtils {
 
     }
 
-    public static void createRepo(String nomRepo, Repo repo) throws IOException, SQLException { //cree un repository
+    public static void createRepo(String nomRepo, Repository repo) throws IOException, SQLException { //cree un repository
         try {
 
             Ssh ssh = new Ssh();
@@ -75,7 +75,7 @@ public abstract class RepoUtils {
             }
             ssh.sshCommand(commands);
 
-            repo.setPath("svn://" + Prop.getHoteSsh() + "/" + Prop.getSvnPath() + "/" + nomRepo);
+            repo.setPath("svn://" + Prop.getHoteSsh() + Prop.getSvnPath() + "/" + nomRepo);
 
         } catch (Exception e) {
             System.out.println(e);
@@ -84,7 +84,7 @@ public abstract class RepoUtils {
 
     }
 
-    public static void DeleteRepo(Repo repo) throws IOException, SQLException { // supprime un repository
+    public static void DeleteRepo(Repository repo) throws IOException, SQLException { // supprime un repository
         try {
             Ssh ssh = new Ssh();
             ArrayList<String> commands = new ArrayList<String>();
