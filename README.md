@@ -1,2 +1,4 @@
-# Project_ASI_1
-Premier projet java en groupe
+# Ovaj
+
+
+Requ svn / ssh and mysql server
