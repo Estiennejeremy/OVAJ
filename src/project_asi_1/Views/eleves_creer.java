@@ -6,6 +6,8 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import project_asi_1.Classes.DAO.EleveDAO;
+import project_asi_1.Classes.Eleve;
 
 /**
  *
@@ -36,8 +38,6 @@ public class eleves_creer extends javax.swing.JPanel {
         jTextFieldEleve_nom = new javax.swing.JTextField();
         jTextFieldEleve_mail = new javax.swing.JTextField();
         jTextFieldEleve_prenom = new javax.swing.JTextField();
-        jCheckBoxEleve_repo = new javax.swing.JCheckBox();
-        jCheckBoxEleve_repo1 = new javax.swing.JCheckBox();
         btnEleve_valider = new javax.swing.JButton();
         btnEleve_retour1 = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
@@ -72,12 +72,6 @@ public class eleves_creer extends javax.swing.JPanel {
             }
         });
 
-        jCheckBoxEleve_repo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jCheckBoxEleve_repo.setText("Base de données");
-
-        jCheckBoxEleve_repo1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jCheckBoxEleve_repo1.setText("Repository");
-
         btnEleve_valider.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnEleve_valider.setText("Valider");
         btnEleve_valider.addActionListener(new java.awt.event.ActionListener() {
@@ -106,10 +100,6 @@ public class eleves_creer extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBoxEleve_repo)
-                .addGap(217, 217, 217))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -133,14 +123,9 @@ public class eleves_creer extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(470, 470, 470)
                         .addComponent(lblEleve_creer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 433, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 438, Short.MAX_VALUE)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(296, 296, 296)
-                    .addComponent(jCheckBoxEleve_repo1)
-                    .addContainerGap(583, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(60, 60, 60)
@@ -172,16 +157,9 @@ public class eleves_creer extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextFieldEleve_mail, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                         .addGap(1, 1, 1)))
-                .addGap(59, 59, 59)
-                .addComponent(jCheckBoxEleve_repo)
-                .addGap(40, 40, 40)
+                .addGap(152, 152, 152)
                 .addComponent(btnEleve_valider, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(458, Short.MAX_VALUE)
-                    .addComponent(jCheckBoxEleve_repo1)
-                    .addGap(209, 209, 209)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(584, Short.MAX_VALUE)
@@ -215,18 +193,22 @@ public class eleves_creer extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEleve_retour1ActionPerformed
 
     private void btnEleve_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEleve_validerActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
-        Frame.getFrames()[0].setVisible(true);
+        try {
+            EleveDAO eleveDao = new EleveDAO();
+            Eleve eleve = new Eleve(jTextFieldEleve_nom.getText(), jTextFieldEleve_prenom.getText(), jTextFieldEleve_mail.getText());
+            eleveDao.saveEleve(eleve);
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
+            Frame.getFrames()[0].setVisible(true);
+        } catch (Exception e) {
+        }
+
     }//GEN-LAST:event_btnEleve_validerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEleve_retour1;
     private javax.swing.JButton btnEleve_valider;
     private javax.swing.JButton btnExit;
-    private javax.swing.JCheckBox jCheckBoxEleve_repo;
-    private javax.swing.JCheckBox jCheckBoxEleve_repo1;
     private javax.swing.JTextField jTextFieldEleve_mail;
     private javax.swing.JTextField jTextFieldEleve_nom;
     private javax.swing.JTextField jTextFieldEleve_prenom;

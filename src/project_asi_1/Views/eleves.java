@@ -6,6 +6,10 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import project_asi_1.Classes.DAO.EleveDAO;
+import project_asi_1.Classes.Eleve;
 
 /**
  *
@@ -18,6 +22,17 @@ public class eleves extends javax.swing.JPanel {
      */
     public eleves() {
         initComponents();
+        remplirListEleve();
+    }
+
+    public void remplirListEleve() {
+        EleveDAO eleveDao = new EleveDAO();
+        List<Eleve> eleves = eleveDao.getEleves();
+        DefaultListModel dlm = new DefaultListModel();
+        jListEleves.setModel(dlm);
+        for (Eleve e : eleves) {
+            dlm.addElement(e);
+        }
     }
 
     /**
@@ -32,7 +47,6 @@ public class eleves extends javax.swing.JPanel {
         lblEleves = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListEleves = new javax.swing.JList<>();
-        btnModifier = new javax.swing.JButton();
         btnRetour = new javax.swing.JButton();
         brnCreer = new javax.swing.JButton();
         btnSupprimer = new javax.swing.JButton();
@@ -43,20 +57,13 @@ public class eleves extends javax.swing.JPanel {
         lblEleves.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblEleves.setText("Elèves");
 
+        jListEleves.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jListEleves.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(jListEleves);
-
-        btnModifier.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnModifier.setText("Modifier");
-        btnModifier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModifierActionPerformed(evt);
-            }
-        });
 
         btnRetour.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnRetour.setText("Retour");
@@ -104,7 +111,6 @@ public class eleves extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(brnCreer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModifier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSupprimer, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                     .addComponent(btnRetour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(242, 242, 242))
@@ -124,23 +130,14 @@ public class eleves extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(brnCreer, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(48, 48, 48)
                         .addComponent(btnSupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(58, 58, 58)
                         .addComponent(btnRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifierActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.eleves_modifier());
-        Frame.getFrames()[0].setVisible(true);
-    }//GEN-LAST:event_btnModifierActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
@@ -155,10 +152,14 @@ public class eleves extends javax.swing.JPanel {
     }//GEN-LAST:event_brnCreerActionPerformed
 
     private void btnSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupprimerActionPerformed
+        Object r = jListEleves.getModel().getElementAt(jListEleves.getSelectedIndex());
+        if (r instanceof Eleve) {
+            Eleve eleve = (Eleve) r;
 
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.eleves_supprimer());
-        Frame.getFrames()[0].setVisible(true);
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.eleves_supprimer(eleve));
+            Frame.getFrames()[0].setVisible(true);
+        }
     }//GEN-LAST:event_btnSupprimerActionPerformed
 
     private void btnRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourActionPerformed
@@ -171,7 +172,6 @@ public class eleves extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton brnCreer;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnModifier;
     private javax.swing.JButton btnRetour;
     private javax.swing.JButton btnSupprimer;
     private javax.swing.JList<String> jListEleves;

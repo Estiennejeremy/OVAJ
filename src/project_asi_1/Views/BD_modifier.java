@@ -6,6 +6,7 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import project_asi_1.Classes.Bdd;
 
 /**
  *
@@ -16,7 +17,7 @@ public class BD_modifier extends javax.swing.JPanel {
     /**
      * Creates new form BD
      */
-    public BD_modifier() {
+    public BD_modifier(Bdd bdd) {
         initComponents();
     }
 

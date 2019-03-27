@@ -6,6 +6,8 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import project_asi_1.Classes.DAO.EleveDAO;
+import project_asi_1.Classes.Eleve;
 
 /**
  *
@@ -16,8 +18,13 @@ public class eleves_supprimer extends javax.swing.JPanel {
     /**
      * Creates new form eleves_supprimer
      */
-    public eleves_supprimer() {
+    public static Eleve ele;
+
+    public eleves_supprimer(Eleve eleve) {
         initComponents();
+        ele = eleve;
+        jLabelEleve_supprimer.setText("Voulez vous supprimer " + ele.getNom() + " " + ele.getPrenom() + " des élèves");
+
     }
 
     /**
@@ -101,10 +108,19 @@ public class eleves_supprimer extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void jButtonEleve_oui_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEleve_oui_supprimerActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
-        Frame.getFrames()[0].setVisible(true);
+
+        try {
+
+            EleveDAO eleveDao = new EleveDAO();
+            eleveDao.deleteEleve(ele);
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
+            Frame.getFrames()[0].setVisible(true);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }//GEN-LAST:event_jButtonEleve_oui_supprimerActionPerformed
 
     private void jButtonEleve_non_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEleve_non_supprimerActionPerformed

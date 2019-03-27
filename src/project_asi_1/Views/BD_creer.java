@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import project_asi_1.Classes.Bdd;
-import project_asi_1.Classes.DAO.BddDAO;
 import project_asi_1.Classes.DAO.GroupeDAO;
 import project_asi_1.Classes.Groupe;
 
@@ -181,22 +180,22 @@ public class BD_creer extends javax.swing.JPanel {
 
     private void btnBD_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_validerActionPerformed
         // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_creer());
-        Frame.getFrames()[0].setVisible(true);
+
         Groupe p = (Groupe) comboboxBD_user.getModel().getSelectedItem();
         Bdd bdd;
+        if (textBD_nom.getText() != "") {
+            try {
 
-        try {
-            bdd = new Bdd(textBD_nom.getText(), (Groupe) comboboxBD_user.getModel().getSelectedItem());
-            BddDAO bddDao = new BddDAO();
-            bddDao.saveBdd(bdd);
-        } catch (IOException ex) {
-            Logger.getLogger(BD_creer.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(BD_creer.class.getName()).log(Level.SEVERE, null, ex);
+                bdd = new Bdd(textBD_nom.getText(), (Groupe) comboboxBD_user.getModel().getSelectedItem());
+                Frame.getFrames()[0].remove(this);
+                Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_creer(bdd));
+                Frame.getFrames()[0].setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(BD_creer.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(BD_creer.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
     }//GEN-LAST:event_btnBD_validerActionPerformed
 
     private void textBD_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBD_nomActionPerformed

@@ -6,6 +6,7 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import project_asi_1.Classes.Bdd;
 
 /**
  *
@@ -16,8 +17,11 @@ public class BD_popup_creer extends javax.swing.JPanel {
     /**
      * Creates new form BD
      */
-    public BD_popup_creer() {
+    public BD_popup_creer(Bdd bdd) {
         initComponents();
+
+        lblBD_creation.setText("<html> <p>La base de données" + bdd.getNom() + "<br>  a bien été créée pour le groupe " + bdd.getGroupe().getNom() + " </p></html>");
+        txtareaBD_log.setText(bdd.getNomComplet());
     }
 
     /**
@@ -31,7 +35,6 @@ public class BD_popup_creer extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         lblBD_creation = new javax.swing.JLabel();
-        btnBD_copier = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtareaBD_log = new javax.swing.JTextArea();
         btnExit = new javax.swing.JButton();
@@ -39,14 +42,6 @@ public class BD_popup_creer extends javax.swing.JPanel {
 
         lblBD_creation.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         lblBD_creation.setText("<html> <p>La base de données ___________<br>  a bien été créée</p></html>");
-
-        btnBD_copier.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        btnBD_copier.setText("Copier");
-        btnBD_copier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBD_copierActionPerformed(evt);
-            }
-        });
 
         txtareaBD_log.setColumns(20);
         txtareaBD_log.setRows(5);
@@ -82,9 +77,7 @@ public class BD_popup_creer extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblBD_creation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBD_copier)
-                                .addGap(203, 203, 203))
+                                .addGap(344, 344, 344))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))
@@ -104,13 +97,8 @@ public class BD_popup_creer extends javax.swing.JPanel {
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(147, 147, 147)
                 .addComponent(lblBD_creation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(btnBD_copier)))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(btnBD_retour)
                 .addContainerGap())
@@ -121,10 +109,6 @@ public class BD_popup_creer extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBD_copierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_copierActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBD_copierActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
@@ -139,7 +123,6 @@ public class BD_popup_creer extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBD_retourActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBD_copier;
     private javax.swing.JButton btnBD_retour;
     private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel2;

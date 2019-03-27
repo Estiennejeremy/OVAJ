@@ -7,8 +7,6 @@ package project_asi_1.Classes.utils;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import org.hibernate.Session;
 import project_asi_1.Classes.Bdd;
 import project_asi_1.Classes.DAO.BddDAO;
@@ -26,10 +24,9 @@ public abstract class BddUtils {
      */
     public static void generateBd(Groupe g, Bdd bd) throws IOException, SQLException { // cree un schema
 
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
         Session session = HibernateUtils.getSessionFactory().openSession();
         String SQLRequest = "";
-        String nomBd = bd.getNom() + timeStamp;
+        String nomBd = g.getNom() + "_" + bd.getNom();
         SQLRequest = "CREATE SCHEMA " + nomBd + ";";
 
         session.beginTransaction();
@@ -40,16 +37,16 @@ public abstract class BddUtils {
         BddDAO bddDao = new BddDAO();
 
         bddDao.saveBdd(bd);
-        String SQLRequest2 = "";
-        for (Eleve e : g.getEleves()) {
-            SQLRequest2 = "";
-            SQLRequest2 = "GRANT ALL PRIVILEGES ON " + nomBd + ".* TO '" + e.getAbreviation() + "'@'%' ; ";
-            session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.createSQLQuery(SQLRequest2).executeUpdate();
-            session.getTransaction().commit();
-            session.close();
-        }
+//        String SQLRequest2 = "";
+//        for (Eleve e : g.getEleves()) {
+//            SQLRequest2 = "";
+//            SQLRequest2 = "GRANT ALL PRIVILEGES ON " + nomBd + ".* TO '" + e.getAbreviation() + "'@'%' ; ";
+//            session = HibernateUtils.getSessionFactory().openSession();
+//            session.beginTransaction();
+//            session.createSQLQuery(SQLRequest2).executeUpdate();
+//            session.getTransaction().commit();
+//            session.close();
+//        }
 
     }
 

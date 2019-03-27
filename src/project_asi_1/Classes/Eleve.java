@@ -8,7 +8,6 @@ package project_asi_1.Classes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,7 +40,7 @@ public class Eleve {
     private String pwd;
     @Column(name = "abreviation")
     private String abreviation;
-    @ManyToMany(mappedBy = "eleves", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "eleves", fetch = FetchType.EAGER)
     private List<Groupe> groupes;
 
     public Eleve() {

@@ -6,6 +6,7 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import project_asi_1.Classes.Bdd;
@@ -22,20 +23,29 @@ public class BaseDD extends javax.swing.JPanel {
     /**
      * Creates new form BaseDD
      */
+    public List<Bdd> bdds = new ArrayList<Bdd>();
+
     public BaseDD() {
         initComponents();
-        remplirListBD();
+
         remplirListGroupe();
     }
 
     private void remplirListBD() {
+
+        bdds = null;
         BddDAO bdDao = new BddDAO();
-        List<Bdd> b = bdDao.getBdd();
-        DefaultListModel dlm = new DefaultListModel();
-        listBD_BD.setModel(dlm);
-        for (Bdd bdd : b) {
-            dlm.addElement(bdd);
+        Object o = listBD_eleve.getModel().getElementAt(listBD_eleve.getSelectedIndex());
+        if (o instanceof Groupe) {
+            Groupe g = (Groupe) o;
+            bdds = bdDao.getBddByGroupe(g);
         }
+        DefaultListModel dlm2 = new DefaultListModel();
+        listBD_BD.setModel(dlm2);
+        for (Bdd bd : bdds) {
+            dlm2.addElement(bd);
+        }
+
     }
 
     private void remplirListGroupe() {
@@ -44,7 +54,7 @@ public class BaseDD extends javax.swing.JPanel {
         DefaultListModel dlmGr = new DefaultListModel();
         listBD_eleve.setModel(dlmGr);
         for (Groupe groupe : gr) {
-            dlmGr.addElement(groupe.getNom());
+            dlmGr.addElement(groupe);
         }
     }
 
@@ -63,38 +73,32 @@ public class BaseDD extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         listBD_BD = new javax.swing.JList<>();
         btnBDCréer = new javax.swing.JButton();
-        btnBDModifier = new javax.swing.JButton();
         BtnBDSupprimer = new javax.swing.JButton();
         btnBDRetour = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("Base de donnée");
 
+        listBD_eleve.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         listBD_eleve.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        listBD_eleve.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listBD_eleveValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(listBD_eleve);
 
-        listBD_BD.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        listBD_BD.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jScrollPane2.setViewportView(listBD_BD);
 
         btnBDCréer.setText("Créer");
         btnBDCréer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBDCréerActionPerformed(evt);
-            }
-        });
-
-        btnBDModifier.setText("Modifier");
-        btnBDModifier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBDModifierActionPerformed(evt);
             }
         });
 
@@ -124,15 +128,14 @@ public class BaseDD extends javax.swing.JPanel {
                 .addGap(99, 99, 99)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnBDRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBDCréer, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnBDModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(BtnBDSupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnBDRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnBDSupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(114, 114, 114))
         );
         layout.setVerticalGroup(
@@ -143,15 +146,15 @@ public class BaseDD extends javax.swing.JPanel {
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnBDModifier, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                            .addComponent(BtnBDSupprimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBDCréer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addComponent(btnBDRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(btnBDRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBDCréer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnBDSupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -182,16 +185,13 @@ public class BaseDD extends javax.swing.JPanel {
         System.out.println(listBD_BD.getSelectedValuesList().get(0));
     }//GEN-LAST:event_BtnBDSupprimerActionPerformed
 
-    private void btnBDModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBDModifierActionPerformed
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BD_modifier());
-        Frame.getFrames()[0].setVisible(true);
-    }//GEN-LAST:event_btnBDModifierActionPerformed
+    private void listBD_eleveValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listBD_eleveValueChanged
+        remplirListBD();
+    }//GEN-LAST:event_listBD_eleveValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBDSupprimer;
     private javax.swing.JButton btnBDCréer;
-    private javax.swing.JButton btnBDModifier;
     private javax.swing.JButton btnBDRetour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

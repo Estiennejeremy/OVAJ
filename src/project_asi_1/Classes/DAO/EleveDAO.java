@@ -10,6 +10,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import project_asi_1.Classes.Eleve;
+import project_asi_1.Classes.Groupe;
 import project_asi_1.Classes.utils.HibernateUtils;
 
 /**
@@ -37,8 +38,12 @@ public class EleveDAO {
     }
 
     public List<Eleve> getEleves() {
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        return (List<Eleve>) session.createQuery("from " + Eleve.class.getName()).list();
+        Session session = getSession();
+        session.beginTransaction();
+        List<Eleve> eleves = (List<Eleve>) session.createQuery("from " + Eleve.class.getName()).list();
+        session.getTransaction().commit();
+
+        return eleves;
     }
 
     public void refresh(Eleve eleve) {
@@ -49,9 +54,28 @@ public class EleveDAO {
 
     }
 
+    public void deleteEleve(Eleve eleve) {
+        Transaction transaction = null;
+        Session session = getSession();
+        transaction = session.beginTransaction();
+        session.delete(eleve);
+
+        transaction.commit();
+
+    }
+
     public Eleve getOneEleve(Eleve eleve) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return (Eleve) session.get(Eleve.class, eleve.getId());
+    }
+
+    public List<Eleve> getEleveByGroupe(Groupe g) {
+        Session session = getSession();
+        session.beginTransaction();
+        List<Eleve> eleves = (List<Eleve>) session.createQuery("from " + Eleve.class.getName() + " e  left join groupe_eleve g on e.id_eleve = g.id_groupe  where id_groupe = " + g.getId()).list();
+        session.getTransaction().commit();
+        return eleves;
+
     }
 
 }
