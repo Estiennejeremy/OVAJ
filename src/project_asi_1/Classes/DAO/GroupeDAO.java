@@ -35,6 +35,16 @@ public class GroupeDAO {
         transaction.commit();
     }
 
+    public void deleteGroupe(Groupe groupe) {
+        Transaction transaction = null;
+        Session session = getSession();
+        transaction = session.beginTransaction();
+        session.delete(groupe);
+
+        transaction.commit();
+
+    }
+
     public void refresh(Groupe groupe) {
         Transaction transaction = null;
         transaction = HibernateUtils.getSessionFactory().getCurrentSession().beginTransaction();

@@ -6,6 +6,8 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import project_asi_1.Classes.DAO.GroupeDAO;
+import project_asi_1.Classes.Groupe;
 
 /**
  *
@@ -16,8 +18,12 @@ public class groupes_supprimer extends javax.swing.JPanel {
     /**
      * Creates new form groupes_supprimer
      */
-    public groupes_supprimer() {
+    public Groupe g2;
+
+    public groupes_supprimer(Groupe g) {
         initComponents();
+        g2 = g;
+        jLabelGroupe_supprimer.setText("Voulez vous supprimer " + g.getNom() + " des groupes ?");
     }
 
     /**
@@ -101,10 +107,16 @@ public class groupes_supprimer extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void jButtonGroupe_oui_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_oui_supprimerActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
-        Frame.getFrames()[0].setVisible(true);
+        try {
+            GroupeDAO groupeDao = new GroupeDAO();
+            groupeDao.deleteGroupe(g2);
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
+            Frame.getFrames()[0].setVisible(true);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }//GEN-LAST:event_jButtonGroupe_oui_supprimerActionPerformed
 
     private void jButtonGroupe_non_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_non_supprimerActionPerformed

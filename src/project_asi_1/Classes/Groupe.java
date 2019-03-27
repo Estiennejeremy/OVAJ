@@ -16,8 +16,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,7 +25,7 @@ import javax.persistence.Table;
  * @author ESTIENNE
  */
 @Entity
-@Table(name = "groupe", schema = "OVAJ")
+@Table(name = "groupe")
 public class Groupe {
 
     @Id
@@ -36,15 +34,7 @@ public class Groupe {
     private int id;
     @Column(name = "nom")
     private String nom;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            schema = "OVAJ",
-            name = "groupe_eleve",
-            joinColumns = {
-                @JoinColumn(name = "id_groupe")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "id_eleve")}
-    )
+    @ManyToMany(mappedBy = "groupes", fetch = FetchType.EAGER)
     private List<Eleve> eleves;
 
     @OneToMany(mappedBy = "groupe")
@@ -112,6 +102,12 @@ public class Groupe {
 
     public void addEleve(Eleve e) {
         this.eleves.add(e);
+
+    }
+
+    public void removeEleve(Eleve e) {
+        this.eleves.remove(e);
+        e.removeGroupe(this);
     }
 
     public void addRepo(Repository r) {

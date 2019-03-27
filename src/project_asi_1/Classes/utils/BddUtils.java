@@ -37,16 +37,16 @@ public abstract class BddUtils {
         BddDAO bddDao = new BddDAO();
 
         bddDao.saveBdd(bd);
-//        String SQLRequest2 = "";
-//        for (Eleve e : g.getEleves()) {
-//            SQLRequest2 = "";
-//            SQLRequest2 = "GRANT ALL PRIVILEGES ON " + nomBd + ".* TO '" + e.getAbreviation() + "'@'%' ; ";
-//            session = HibernateUtils.getSessionFactory().openSession();
-//            session.beginTransaction();
-//            session.createSQLQuery(SQLRequest2).executeUpdate();
-//            session.getTransaction().commit();
-//            session.close();
-//        }
+        String SQLRequest2 = "";
+        for (Eleve e : g.getEleves()) {
+            SQLRequest2 = "";
+            SQLRequest2 = "GRANT ALL PRIVILEGES ON " + nomBd + ".* TO '" + e.getAbreviation() + "'@'%' ; ";
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.createSQLQuery(SQLRequest2).executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+        }
 
     }
 

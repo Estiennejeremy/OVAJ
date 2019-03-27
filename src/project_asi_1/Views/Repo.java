@@ -212,11 +212,6 @@ public class Repo extends javax.swing.JPanel {
         Frame.getFrames()[0].setVisible(true);
     }//GEN-LAST:event_btnREPO_retourActionPerformed
 
-    private void txtREPO_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtREPO_searchActionPerformed
-        System.out.println("try");
-
-    }//GEN-LAST:event_txtREPO_searchActionPerformed
-
     private void btnREPO_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_supprimerActionPerformed
         Object r = listREPO_repo.getModel().getElementAt(listREPO_repo.getSelectedIndex());
         if (r instanceof Repository) {
@@ -245,6 +240,10 @@ public class Repo extends javax.swing.JPanel {
     private void listREPO_eleveValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listREPO_eleveValueChanged
         remplirListRepo();
     }//GEN-LAST:event_listREPO_eleveValueChanged
+
+    private void txtREPO_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtREPO_searchActionPerformed
+        System.out.println("try");
+    }//GEN-LAST:event_txtREPO_searchActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;

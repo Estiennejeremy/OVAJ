@@ -21,7 +21,7 @@ import project_asi_1.Classes.utils.RepoUtils;
  * @author Lucas
  */
 @Entity
-@Table(name = "repo", schema = "OVAJ")
+@Table(name = "repo")
 public class Repository {
 
     @Id

@@ -6,6 +6,10 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import java.util.List;
+import project_asi_1.Classes.DAO.EleveDAO;
+import project_asi_1.Classes.Eleve;
+import project_asi_1.Classes.Groupe;
 
 /**
  *
@@ -13,11 +17,21 @@ import java.awt.Frame;
  */
 public class groupes_addmembre extends javax.swing.JPanel {
 
-    /**
-     * Creates new form groupes_addmembre
-     */
-    public groupes_addmembre() {
+    public static Groupe g2;
+
+    public groupes_addmembre(Groupe g) {
+        g2 = g;
         initComponents();
+        remplirListEleve();
+    }
+
+    public void remplirListEleve() {
+        EleveDAO eleveDao = new EleveDAO();
+        List<Eleve> eleves = eleveDao.getEleves();
+
+        for (Eleve eleve : eleves) {
+            jComboBox1.addItem(eleve);
+        }
     }
 
     /**
@@ -37,8 +51,6 @@ public class groupes_addmembre extends javax.swing.JPanel {
 
         jLabelGroupe_addMembre.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabelGroupe_addMembre.setText("Ajouter un membre");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButtonGroupe_addMembre_annuler.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButtonGroupe_addMembre_annuler.setText("Annuler");
@@ -116,17 +128,28 @@ public class groupes_addmembre extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonGroupe_addMembre_annulerActionPerformed
 
     private void jButtonGroupe_addMembre_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_addMembre_validerActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
-        Frame.getFrames()[0].setVisible(true);
+        try {
+            Eleve e = (Eleve) jComboBox1.getSelectedItem();
+            e.addGroupes(g2);
+            EleveDAO eleveDao = new EleveDAO();
+            eleveDao.refresh(e);
+
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
+            Frame.getFrames()[0].setVisible(true);
+
+        } catch (Exception e) {
+
+            System.out.println(e);
+        }
+
     }//GEN-LAST:event_jButtonGroupe_addMembre_validerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton jButtonGroupe_addMembre_annuler;
     private javax.swing.JButton jButtonGroupe_addMembre_valider;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Eleve> jComboBox1;
     private javax.swing.JLabel jLabelGroupe_addMembre;
     // End of variables declaration//GEN-END:variables
 }

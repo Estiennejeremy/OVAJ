@@ -198,7 +198,7 @@ public class eleves_creer extends javax.swing.JPanel {
             Eleve eleve = new Eleve(jTextFieldEleve_nom.getText(), jTextFieldEleve_prenom.getText(), jTextFieldEleve_mail.getText());
             eleveDao.saveEleve(eleve);
             Frame.getFrames()[0].remove(this);
-            Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
+            Frame.getFrames()[0].add(new project_asi_1.Views.eleves_pop_up_create(eleve));
             Frame.getFrames()[0].setVisible(true);
         } catch (Exception e) {
         }

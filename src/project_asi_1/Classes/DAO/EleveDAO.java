@@ -59,7 +59,6 @@ public class EleveDAO {
         Session session = getSession();
         transaction = session.beginTransaction();
         session.delete(eleve);
-
         transaction.commit();
 
     }

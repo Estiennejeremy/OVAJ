@@ -19,10 +19,10 @@ import project_asi_1.Classes.utils.BddUtils;
 
 /**
  *
- * @author ESTIENNE
+ * @author ESTIENNE , schema = "OVAJ"
  */
 @Entity
-@Table(name = "bdd", schema = "OVAJ")
+@Table(name = "bdd")
 public class Bdd implements Serializable {
 
     @Id

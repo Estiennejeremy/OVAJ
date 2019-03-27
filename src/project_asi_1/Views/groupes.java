@@ -242,24 +242,40 @@ public class groupes extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonGroupe_creer2ActionPerformed
 
     private void jButtonGroupe_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_supprimerActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_supprimer());
-        Frame.getFrames()[0].setVisible(true);
+        Object o = jListGroupe1.getModel().getElementAt(jListGroupe1.getSelectedIndex());
+        if (o instanceof Groupe) {
+            Groupe g = (Groupe) o;
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.groupes_supprimer(g));
+            Frame.getFrames()[0].setVisible(true);
+        }
+
     }//GEN-LAST:event_jButtonGroupe_supprimerActionPerformed
 
     private void jButtonGroupe_membre_creerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_membre_creerActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_addmembre());
-        Frame.getFrames()[0].setVisible(true);
+        Object o = jListGroupe1.getModel().getElementAt(jListGroupe1.getSelectedIndex());
+        if (o instanceof Groupe) {
+            Groupe g = (Groupe) o;
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.groupes_addmembre(g));
+            Frame.getFrames()[0].setVisible(true);
+        }
+
     }//GEN-LAST:event_jButtonGroupe_membre_creerActionPerformed
 
     private void jButtonGroupe_supprimer_membreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_supprimer_membreActionPerformed
-        // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.groupes_supp_membre());
-        Frame.getFrames()[0].setVisible(true);
+        Object o = jListGroupe1.getModel().getElementAt(jListGroupe1.getSelectedIndex());
+        Object o2 = jListGroupe_gestion1.getModel().getElementAt(jListGroupe1.getSelectedIndex());
+        if (o instanceof Groupe) {
+            if (o2 instanceof Eleve) {
+                Groupe g = (Groupe) o;
+                Eleve e = (Eleve) o2;
+                Frame.getFrames()[0].remove(this);
+                Frame.getFrames()[0].add(new project_asi_1.Views.groupes_supp_membre(e, g));
+                Frame.getFrames()[0].setVisible(true);
+            }
+
+        }
     }//GEN-LAST:event_jButtonGroupe_supprimer_membreActionPerformed
 
     private void jListGroupe1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListGroupe1ValueChanged
