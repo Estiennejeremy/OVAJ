@@ -41,6 +41,7 @@ public class eleves_creer extends javax.swing.JPanel {
         btnEleve_valider = new javax.swing.JButton();
         btnEleve_retour1 = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        erreur_lbl = new javax.swing.JLabel();
 
         lblEleve_prenom.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         lblEleve_prenom.setText("Prénom");
@@ -96,6 +97,9 @@ public class eleves_creer extends javax.swing.JPanel {
             }
         });
 
+        erreur_lbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        erreur_lbl.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,7 +122,8 @@ public class eleves_creer extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnEleve_valider, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldEleve_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jTextFieldEleve_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(erreur_lbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(470, 470, 470)
@@ -157,7 +162,9 @@ public class eleves_creer extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextFieldEleve_mail, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                         .addGap(1, 1, 1)))
-                .addGap(152, 152, 152)
+                .addGap(32, 32, 32)
+                .addComponent(erreur_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
                 .addComponent(btnEleve_valider, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,14 +200,24 @@ public class eleves_creer extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEleve_retour1ActionPerformed
 
     private void btnEleve_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEleve_validerActionPerformed
-        try {
-            EleveDAO eleveDao = new EleveDAO();
-            Eleve eleve = new Eleve(jTextFieldEleve_nom.getText(), jTextFieldEleve_prenom.getText(), jTextFieldEleve_mail.getText());
-            eleveDao.saveEleve(eleve);
-            Frame.getFrames()[0].remove(this);
+        if (jTextFieldEleve_nom.getText().isEmpty()) {
+            erreur_lbl.setText("Le nom ne peut pas être vide");
+        } else if (jTextFieldEleve_prenom.getText().isEmpty()) {
+            erreur_lbl.setText("Le prénom ne peut pas être vide");
+        } else if (jTextFieldEleve_mail.getText().isEmpty()) {
+            erreur_lbl.setText("Le mail ne peut pas être vide");
+        } else {
+            try {
+                EleveDAO eleveDao = new EleveDAO();
+                 Eleve eleve = new Eleve(jTextFieldEleve_nom.getText(), jTextFieldEleve_prenom.getText(), jTextFieldEleve_mail.getText());
+                eleveDao.saveEleve(eleve);
+                Frame.getFrames()[0].remove(this);
+                Frame.getFrames()[0].add(new project_asi_1.Views.eleves_pop_up_create(eleve));
+                Frame.getFrames()[0].setVisible(true);
+            } catch (Exception e) {
+            }
+               
             Frame.getFrames()[0].add(new project_asi_1.Views.eleves_pop_up_create(eleve));
-            Frame.getFrames()[0].setVisible(true);
-        } catch (Exception e) {
         }
 
     }//GEN-LAST:event_btnEleve_validerActionPerformed
@@ -209,6 +226,7 @@ public class eleves_creer extends javax.swing.JPanel {
     private javax.swing.JButton btnEleve_retour1;
     private javax.swing.JButton btnEleve_valider;
     private javax.swing.JButton btnExit;
+    private javax.swing.JLabel erreur_lbl;
     private javax.swing.JTextField jTextFieldEleve_mail;
     private javax.swing.JTextField jTextFieldEleve_nom;
     private javax.swing.JTextField jTextFieldEleve_prenom;

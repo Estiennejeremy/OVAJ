@@ -6,6 +6,8 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import project_asi_1.Classes.Bdd;
+import project_asi_1.Classes.DAO.BddDAO;
 
 /**
  *
@@ -16,8 +18,12 @@ public class BD_popup_suppr extends javax.swing.JPanel {
     /**
      * Creates new form BD
      */
-    public BD_popup_suppr() {
+    public static Bdd bd;
+
+    public BD_popup_suppr(Bdd bdd) {
         initComponents();
+        bd = bdd;
+        lblBD_suppr.setText("<html> <p>Voulez-vous supprimer " + bdd.getNom() + "<br>  des bases de données </p></html>");
     }
 
     /**
@@ -109,9 +115,19 @@ public class BD_popup_suppr extends javax.swing.JPanel {
 
     private void btnBD_ouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBD_ouiActionPerformed
         // TODO add your handling code here:
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BaseDD());
-        Frame.getFrames()[0].setVisible(true);
+
+        try {
+
+            BddDAO bddDao = new BddDAO();
+            bddDao.deleteBdd(bd);
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.BaseDD());
+            Frame.getFrames()[0].setVisible(true);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }//GEN-LAST:event_btnBD_ouiActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
