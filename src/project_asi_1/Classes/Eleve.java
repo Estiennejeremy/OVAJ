@@ -8,6 +8,7 @@ package project_asi_1.Classes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,14 +17,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import project_asi_1.Classes.DAO.EleveDAO;
 
 /**
  *
  * @author ESTIENNE
  */
 @Entity
-@Table(name = "eleve", schema = "OVAJ")
+@Table(name = "eleve")
 public class Eleve {
 
     @Id
@@ -40,7 +40,7 @@ public class Eleve {
     private String pwd;
     @Column(name = "abreviation")
     private String abreviation;
-    @ManyToMany(mappedBy = "eleves", fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private List<Groupe> groupes;
 
     public Eleve() {
@@ -75,9 +75,8 @@ public class Eleve {
         this.pwd = generatedString;
         this.abreviation = prenom.charAt(0) + nom;
         this.groupes = new ArrayList<Groupe>();
-        EleveDAO eleveDao = new EleveDAO();
-        // BddUtils.createMysqlUser(this);
 
+        // BddUtils.createMysqlUser(this);
     }
 
     public List<Groupe> getGroupes() {
@@ -94,6 +93,7 @@ public class Eleve {
 
     public void addGroupes(Groupe g) {
         this.groupes.add(g);
+
     }
 
     public void setNom(String nom) {
@@ -132,6 +132,10 @@ public class Eleve {
         this.pwd = pwd;
     }
 
+    public void removeGroupe(Groupe g) {
+        this.groupes.remove(g);
+    }
+
     public String getAbreviation() {
         return abreviation;
     }
@@ -142,7 +146,7 @@ public class Eleve {
 
     @Override
     public String toString() {
-        return nom;
+        return nom + " " + prenom;
     }
 
 }

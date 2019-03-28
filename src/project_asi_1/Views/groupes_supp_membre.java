@@ -6,6 +6,9 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import project_asi_1.Classes.DAO.GroupeDAO;
+import project_asi_1.Classes.Eleve;
+import project_asi_1.Classes.Groupe;
 
 /**
  *
@@ -13,11 +16,14 @@ import java.awt.Frame;
  */
 public class groupes_supp_membre extends javax.swing.JPanel {
 
-    /**
-     * Creates new form groupes_supp_membre
-     */
-    public groupes_supp_membre() {
+    public Eleve e2;
+    public Groupe g2;
+
+    public groupes_supp_membre(Eleve e, Groupe g) {
         initComponents();
+        e2 = e;
+        g2 = g;
+        jLabelGroupe_supprimer.setText("<html><p>Voulez vous supprimer le  <br>membre " + e.getNom() + " <br> du groupe " + g.getNom() + "?</p></html>");
     }
 
     /**
@@ -101,7 +107,13 @@ public class groupes_supp_membre extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void jButtonGroupe_oui_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_oui_supprimerActionPerformed
-        // TODO add your handling code here:
+        try {
+            g2.removeEleve(e2);
+            GroupeDAO groupeDao = new GroupeDAO();
+            groupeDao.refresh(g2);
+
+        } catch (Exception e) {
+        }
         Frame.getFrames()[0].remove(this);
         Frame.getFrames()[0].add(new project_asi_1.Views.groupes());
         Frame.getFrames()[0].setVisible(true);

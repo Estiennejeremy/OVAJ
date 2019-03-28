@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import project_asi_1.Classes.Bdd;
 import project_asi_1.Classes.Groupe;
+import project_asi_1.Classes.utils.BddUtils;
 import project_asi_1.Classes.utils.HibernateUtils;
 
 /**
@@ -43,6 +44,7 @@ public class BddDAO {
         transaction = session.beginTransaction();
         session.delete(bdd);
         transaction.commit();
+        BddUtils.deleteSchema(bdd);
     }
 
     public void refresh(Bdd bdd) {
