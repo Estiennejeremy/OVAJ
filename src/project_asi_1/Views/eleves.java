@@ -187,7 +187,7 @@ public class eleves extends javax.swing.JPanel {
         if (r instanceof Eleve) {
             Eleve eleve = (Eleve) r;
 
-            labInfo.setText("Nom : " + eleve.getNom() + " Prénom :  " + eleve.getPrenom() + "  mot de passe : " + eleve.getPwd());
+            labInfo.setText("Login : " + eleve.getAbreviation() + "           mot de passe : " + eleve.getPwd());
         }
 
     }//GEN-LAST:event_jListElevesValueChanged

@@ -34,7 +34,7 @@ public class Repository {
     private String path;
 
     @ManyToOne
-    private Groupe groupe;
+    private Groupe groupe_repo;
 
     public Repository() {
     }
@@ -43,12 +43,12 @@ public class Repository {
         this.id = id;
         this.nom = nom;
         this.path = path;
-        this.groupe = groupe;
+        this.groupe_repo = groupe;
     }
 
     public Repository(String nom, Groupe g) throws IOException, SQLException {
         this.nom = nom;
-        this.groupe = g;
+        this.groupe_repo = g;
 
         RepoUtils.createRepo(nom, this);
 
@@ -79,11 +79,11 @@ public class Repository {
     }
 
     public Groupe getGroupe() {
-        return groupe;
+        return groupe_repo;
     }
 
     public void setGroupe(Groupe groupe) {
-        this.groupe = groupe;
+        this.groupe_repo = groupe;
     }
 
     @Override

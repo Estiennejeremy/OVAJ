@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import project_asi_1.Classes.utils.BddUtils;
 
 /**
  *
@@ -76,7 +77,7 @@ public class Eleve {
         this.abreviation = prenom.charAt(0) + nom;
         this.groupes = new ArrayList<Groupe>();
 
-        // BddUtils.createMysqlUser(this);
+        BddUtils.createMysqlUser(this);
     }
 
     public List<Groupe> getGroupes() {

@@ -110,4 +110,14 @@ public abstract class BddUtils {
 
     }
 
+    public static void removeEleveOnSchema(Eleve e, Bdd d) { // ajoute un eleve sur un schema
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        String SQLRequest = "REVOKE all PRIVILEGES ON " + d.getNom() + ".* from '" + e.getAbreviation() + "'@'%';";
+        session.beginTransaction();
+        session.createSQLQuery(SQLRequest).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
 }

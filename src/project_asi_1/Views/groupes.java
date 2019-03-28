@@ -265,7 +265,7 @@ public class groupes extends javax.swing.JPanel {
 
     private void jButtonGroupe_supprimer_membreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_supprimer_membreActionPerformed
         Object o = jListGroupe1.getModel().getElementAt(jListGroupe1.getSelectedIndex());
-        Object o2 = jListGroupe_gestion1.getModel().getElementAt(jListGroupe1.getSelectedIndex());
+        Object o2 = jListGroupe_gestion1.getModel().getElementAt(jListGroupe_gestion1.getSelectedIndex());
         if (o instanceof Groupe) {
             if (o2 instanceof Eleve) {
                 Groupe g = (Groupe) o;

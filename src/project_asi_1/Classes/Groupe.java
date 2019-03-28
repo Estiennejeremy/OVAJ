@@ -37,10 +37,10 @@ public class Groupe {
     @ManyToMany(mappedBy = "groupes", fetch = FetchType.EAGER)
     private List<Eleve> eleves;
 
-    @OneToMany(mappedBy = "groupe")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "groupe_bdd")
     private List<Bdd> bdd;
 
-    @OneToMany(mappedBy = "groupe")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "groupe_repo")
     private List<Repository> repo;
 
     @Column(name = "creation_date")

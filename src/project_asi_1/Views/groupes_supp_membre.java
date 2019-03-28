@@ -6,9 +6,11 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
-import project_asi_1.Classes.DAO.GroupeDAO;
+import project_asi_1.Classes.Bdd;
+import project_asi_1.Classes.DAO.EleveDAO;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.Groupe;
+import project_asi_1.Classes.utils.BddUtils;
 
 /**
  *
@@ -109,8 +111,17 @@ public class groupes_supp_membre extends javax.swing.JPanel {
     private void jButtonGroupe_oui_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGroupe_oui_supprimerActionPerformed
         try {
             g2.removeEleve(e2);
-            GroupeDAO groupeDao = new GroupeDAO();
-            groupeDao.refresh(g2);
+            EleveDAO eleveDao = new EleveDAO();
+            eleveDao.refresh(e2);
+
+            try {
+                for (Bdd bd : g2.getBdd()) {
+                    BddUtils.removeEleveOnSchema(e2, bd);
+                }
+
+            } catch (Exception e2) {
+                System.out.println(e2);
+            }
 
         } catch (Exception e) {
         }

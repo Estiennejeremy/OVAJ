@@ -6,10 +6,16 @@
 package project_asi_1.Views;
 
 import java.awt.Frame;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import project_asi_1.Classes.DAO.EleveDAO;
 import project_asi_1.Classes.Eleve;
 import project_asi_1.Classes.Groupe;
+import project_asi_1.Classes.utils.BddUtils;
+import project_asi_1.Classes.utils.RepoUtils;
 
 /**
  *
@@ -22,15 +28,17 @@ public class groupes_addmembre extends javax.swing.JPanel {
     public groupes_addmembre(Groupe g) {
         g2 = g;
         initComponents();
-        remplirListEleve();
+        remplirListEleve(g2);
     }
 
-    public void remplirListEleve() {
+    public void remplirListEleve(Groupe g) {
         EleveDAO eleveDao = new EleveDAO();
         List<Eleve> eleves = eleveDao.getEleves();
-
         for (Eleve eleve : eleves) {
-            jComboBox1.addItem(eleve);
+            if (!g.getEleves().contains(eleve)) {
+                jComboBox1.addItem(eleve);
+            }
+
         }
     }
 
@@ -133,6 +141,26 @@ public class groupes_addmembre extends javax.swing.JPanel {
             e.addGroupes(g2);
             EleveDAO eleveDao = new EleveDAO();
             eleveDao.refresh(e);
+
+            g2.getRepo().forEach((repository) -> {
+                try {
+                    RepoUtils.addEleveOnRepo(e, repository);
+                } catch (IOException ex) {
+                    Logger.getLogger(groupes_addmembre.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(groupes_addmembre.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println(repository);
+            });
+            try {
+                g2.getBdd().forEach((bdd) -> {
+                    BddUtils.addEleveOnSchema(e, bdd);
+                    System.out.println(bdd);
+                });
+
+            } catch (Exception ef) {
+                System.out.println(ef);
+            }
 
             Frame.getFrames()[0].remove(this);
             Frame.getFrames()[0].add(new project_asi_1.Views.groupes());

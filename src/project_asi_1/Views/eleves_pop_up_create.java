@@ -21,7 +21,7 @@ public class eleves_pop_up_create extends javax.swing.JPanel {
         initComponents();
 
         lblBD_creation.setText("<html> <p>l'eleve" + e.getNom() + "<br>  a bien été créée  </p></html>");
-        txtareaBD_log.setText(" mot de passe  : " + e.getPwd());
+        txtareaBD_log.setText(" identifiant = " + e.getAbreviation() + ",  mot de passe  : " + e.getPwd());;
     }
 
     /**

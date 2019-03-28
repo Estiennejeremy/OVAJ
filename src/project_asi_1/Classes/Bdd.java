@@ -34,7 +34,7 @@ public class Bdd implements Serializable {
     @Column(name = "nom_complet")
     private String nomComplet;
     @ManyToOne
-    private Groupe groupe;
+    private Groupe groupe_bdd;
 
     public Bdd() {
     }
@@ -42,7 +42,7 @@ public class Bdd implements Serializable {
     public Bdd(int id, String nom, String nomComplet, Groupe groupe) {
         this.id = id;
         this.nom = nom;
-        this.groupe = groupe;
+        this.groupe_bdd = groupe;
         this.nomComplet = nomComplet;
     }
 
@@ -56,7 +56,7 @@ public class Bdd implements Serializable {
 
     public Bdd(String nom, Groupe groupe) throws IOException, SQLException {
         this.nom = nom;
-        this.groupe = groupe;
+        this.groupe_bdd = groupe;
         BddUtils.generateBd(groupe, this);
     }
 
@@ -77,11 +77,11 @@ public class Bdd implements Serializable {
     }
 
     public Groupe getGroupe() {
-        return groupe;
+        return groupe_bdd;
     }
 
     public void setGroupe(Groupe groupe) {
-        this.groupe = groupe;
+        this.groupe_bdd = groupe;
     }
 
     @Override

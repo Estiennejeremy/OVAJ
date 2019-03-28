@@ -52,7 +52,7 @@ public class RepoDAO {
     public List<Repository> getRepoByGroupe(Groupe g) {
         Session session = getSession();
         session.beginTransaction();
-        List<Repository> repos = (List<Repository>) session.createQuery("from " + Repository.class.getName() + " where groupe_id_groupe = " + g.getId()).list();
+        List<Repository> repos = (List<Repository>) session.createQuery("from " + Repository.class.getName() + " where groupe_repo_id_groupe = " + g.getId()).list();
         session.getTransaction().commit();
         return repos;
 

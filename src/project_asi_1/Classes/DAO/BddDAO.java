@@ -62,7 +62,7 @@ public class BddDAO {
     public List<Bdd> getBddByGroupe(Groupe g) {
         Session session = getSession();
         session.beginTransaction();
-        List<Bdd> bdds = (List<Bdd>) session.createQuery("from " + Bdd.class.getName() + " where groupe_id_groupe = " + g.getId()).list();
+        List<Bdd> bdds = (List<Bdd>) session.createQuery("from " + Bdd.class.getName() + " where groupe_bdd_id_groupe = " + g.getId()).list();
         session.getTransaction().commit();
         return bdds;
 

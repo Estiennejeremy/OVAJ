@@ -8,6 +8,7 @@ package project_asi_1.Views;
 import java.awt.Frame;
 import project_asi_1.Classes.DAO.EleveDAO;
 import project_asi_1.Classes.Eleve;
+import project_asi_1.Classes.utils.BddUtils;
 
 /**
  *
@@ -23,7 +24,7 @@ public class eleves_supprimer extends javax.swing.JPanel {
     public eleves_supprimer(Eleve eleve) {
         initComponents();
         ele = eleve;
-        jLabelEleve_supprimer.setText(" <html> Voulez vous supprimer " + ele.getNom() + " <br> " + ele.getPrenom() + " des élèves </html>");
+        jLabelEleve_supprimer.setText(" Voulez vous supprimer " + ele.getNom() + " " + ele.getPrenom() + " des élèves ");
 
     }
 
@@ -114,6 +115,7 @@ public class eleves_supprimer extends javax.swing.JPanel {
 
             EleveDAO eleveDao = new EleveDAO();
             eleveDao.deleteEleve(ele);
+            BddUtils.dropMysqlUser(ele);
             Frame.getFrames()[0].remove(this);
             Frame.getFrames()[0].add(new project_asi_1.Views.eleves());
             Frame.getFrames()[0].setVisible(true);
