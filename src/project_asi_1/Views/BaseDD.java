@@ -172,17 +172,15 @@ public class BaseDD extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBDRetourActionPerformed
 
     private void BtnBDSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBDSupprimerActionPerformed
-        Frame.getFrames()[0].remove(this);
-        Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_suppr());
-        Frame.getFrames()[0].setVisible(true);
-        BddDAO bdDao = new BddDAO();
-        Object o = listBD_BD.getModel().getElementAt(listBD_BD.getSelectedIndex());
-        Bdd b = new Bdd();
-        if (o instanceof Bdd) {
-            b = (Bdd) o;
-            bdDao.deleteBdd(b);
+        Object b = listBD_BD.getModel().getElementAt(listBD_BD.getSelectedIndex());
+        if (b instanceof Bdd) {
+            Bdd bdd = (Bdd) b;
+
+            Frame.getFrames()[0].remove(this);
+            Frame.getFrames()[0].add(new project_asi_1.Views.BD_popup_suppr(bdd));
+            Frame.getFrames()[0].setVisible(true);
+
         }
-        System.out.println(listBD_BD.getSelectedValuesList().get(0));
     }//GEN-LAST:event_BtnBDSupprimerActionPerformed
 
     private void listBD_eleveValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listBD_eleveValueChanged

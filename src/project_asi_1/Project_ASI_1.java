@@ -3,7 +3,6 @@ package project_asi_1;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.swing.JFrame;
-import project_asi_1.Classes.Bdd;
 import project_asi_1.Classes.DAO.BddDAO;
 import project_asi_1.Classes.DAO.EleveDAO;
 import project_asi_1.Classes.DAO.GroupeDAO;
@@ -52,8 +51,8 @@ public class Project_ASI_1 {
         groupeDao.saveGroupe(g);
         groupeDao.saveGroupe(g1);
         repoDao.saveRepo(r);
-        Bdd bd = new Bdd("bddASI1", g);
-        Bdd bd1 = new Bdd("bddASI2", g1);
+        //Bdd bd = new Bdd("bddASI1", g);
+        //Bdd bd1 = new Bdd("bddASI2", g1);
 
         System.out.println(bddDao.getBddByGroupe(g1));
         // System.exit(0);

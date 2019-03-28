@@ -59,6 +59,7 @@ public class BD_creer extends javax.swing.JPanel {
         comboboxBD_user = new javax.swing.JComboBox<>();
         lblBD_BD = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
+        erreur_lbl = new javax.swing.JLabel();
 
         lblBD_créer.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblBD_créer.setText("Créer");
@@ -110,6 +111,10 @@ public class BD_creer extends javax.swing.JPanel {
             }
         });
 
+        erreur_lbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        erreur_lbl.setForeground(new java.awt.Color(255, 0, 0));
+        erreur_lbl.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,7 +126,7 @@ public class BD_creer extends javax.swing.JPanel {
                         .addComponent(lblBD_BD)
                         .addGap(363, 363, 363)
                         .addComponent(lblBD_créer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -136,13 +141,17 @@ public class BD_creer extends javax.swing.JPanel {
                             .addComponent(lblBD_nom)
                             .addComponent(lblBD_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboboxBD_user, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textBD_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboboxBD_user, 0, 452, Short.MAX_VALUE)
+                            .addComponent(textBD_nom, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBD_retour)))
                 .addContainerGap(230, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(erreur_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(217, 217, 217))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -165,7 +174,9 @@ public class BD_creer extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboboxBD_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBD_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, 111)
+                .addGap(28, 28, 28)
+                .addComponent(erreur_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(btnBD_valider)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                 .addComponent(btnBD_retour)
@@ -183,7 +194,13 @@ public class BD_creer extends javax.swing.JPanel {
 
         Groupe p = (Groupe) comboboxBD_user.getModel().getSelectedItem();
         Bdd bdd;
-        if (textBD_nom.getText() != "") {
+        if (textBD_nom.getText().isEmpty()) {
+            erreur_lbl.setText("Le nom ne peut pas être vide");
+//            Frame.getFrames()[0].invalidate();
+//            Frame.getFrames()[0].validate();
+//            Frame.getFrames()[0].repaint();
+
+        } else {
             try {
 
                 bdd = new Bdd(textBD_nom.getText(), (Groupe) comboboxBD_user.getModel().getSelectedItem());
@@ -195,6 +212,7 @@ public class BD_creer extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 Logger.getLogger(BD_creer.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         }
     }//GEN-LAST:event_btnBD_validerActionPerformed
 
@@ -223,6 +241,7 @@ public class BD_creer extends javax.swing.JPanel {
     private javax.swing.JButton btnBD_valider;
     private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> comboboxBD_user;
+    private javax.swing.JLabel erreur_lbl;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblBD_BD;
     private javax.swing.JLabel lblBD_créer;

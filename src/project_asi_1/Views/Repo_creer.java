@@ -65,6 +65,7 @@ public class Repo_creer extends javax.swing.JPanel {
         } catch (java.io.IOException e) {
             e.printStackTrace();
         }
+        erreur_lbl = new javax.swing.JLabel();
 
         lblREPO_créer.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblREPO_créer.setText("Créer");
@@ -115,6 +116,9 @@ public class Repo_creer extends javax.swing.JPanel {
             }
         });
 
+        erreur_lbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        erreur_lbl.setForeground(new java.awt.Color(255, 0, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,18 +140,19 @@ public class Repo_creer extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBD_retour))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(175, 175, 175)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblREPO_nom)
                             .addComponent(lblREPO_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textREPO_nom, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
-                            .addComponent(ComboBox_Grou, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBD_retour)))
-                .addContainerGap(230, Short.MAX_VALUE))
+                            .addComponent(textREPO_nom)
+                            .addComponent(ComboBox_Grou, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(erreur_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(228, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -170,7 +175,9 @@ public class Repo_creer extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblREPO_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboBox_Grou, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, 111)
+                .addGap(29, 29, 29)
+                .addComponent(erreur_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addComponent(btnREPO_valider)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                 .addComponent(btnBD_retour)
@@ -184,20 +191,29 @@ public class Repo_creer extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnREPO_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREPO_validerActionPerformed
-        try {
-            Repository rep = new Repository(textREPO_nom.getText(), (Groupe) ComboBox_Grou.getSelectedItem());
-            RepoDAO repoDao = new RepoDAO();
 
-            repoDao.saveRepo(rep);
+        if (textREPO_nom.getText().isEmpty()) {
+            erreur_lbl.setText("Le nom ne peut pas être vide");
+//            Frame.getFrames()[0].invalidate();
+//            Frame.getFrames()[0].validate();
+//            Frame.getFrames()[0].repaint();
 
-            Frame.getFrames()[0].remove(this);
-            Frame.getFrames()[0].add(new project_asi_1.Views.Repo_popup_creer(rep));
-            Frame.getFrames()[0].setVisible(true);
+        } else {
+            try {
+                Repository rep = new Repository(textREPO_nom.getText(), (Groupe) ComboBox_Grou.getSelectedItem());
+                RepoDAO repoDao = new RepoDAO();
 
-        } catch (IOException ex) {
-            Logger.getLogger(Repo_creer.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Repo_creer.class.getName()).log(Level.SEVERE, null, ex);
+                repoDao.saveRepo(rep);
+
+                Frame.getFrames()[0].remove(this);
+                Frame.getFrames()[0].add(new project_asi_1.Views.Repo_popup_creer(rep));
+                Frame.getFrames()[0].setVisible(true);
+
+            } catch (IOException ex) {
+                Logger.getLogger(Repo_creer.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Repo_creer.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }//GEN-LAST:event_btnREPO_validerActionPerformed
@@ -227,6 +243,7 @@ public class Repo_creer extends javax.swing.JPanel {
     private javax.swing.JButton btnBD_retour;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnREPO_valider;
+    private javax.swing.JLabel erreur_lbl;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblREPO_créer;
     private javax.swing.JLabel lblREPO_nom;

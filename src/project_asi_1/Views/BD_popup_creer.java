@@ -20,7 +20,7 @@ public class BD_popup_creer extends javax.swing.JPanel {
     public BD_popup_creer(Bdd bdd) {
         initComponents();
 
-        lblBD_creation.setText("<html> <p>La base de données" + bdd.getNom() + "<br>  a bien été créée pour le groupe " + bdd.getGroupe().getNom() + " </p></html>");
+        lblBD_creation.setText("<html> <p>La base de données " + bdd.getNom() + "<br>  a bien été créée pour le groupe " + bdd.getGroupe().getNom() + " </p></html>");
         txtareaBD_log.setText(bdd.getNomComplet());
     }
 
